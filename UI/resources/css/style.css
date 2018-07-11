@@ -46,6 +46,7 @@ header {
   display: inline-block;
   font-weight: 300;
   transition: background-color 0.5s, border 0.5s, color 0.5s;
+  text-transform: uppercase;
 }
 
 .btn-filled:link,
@@ -57,7 +58,7 @@ header {
 }
 
 .btn-transparent:link,
-.btn-transparent {
+.btn-transparent:visited {
   border: 1px solid aqua;
   color: aqua;
 }
@@ -71,4 +72,75 @@ header {
   background-color: cornflowerblue;
   color: #fff;
   border: 1px solid cornflowerblue;
+}
+
+.logo {
+  width: auto;
+  height: 100px;
+  margin-left: 10px;
+  margin-top: 20px;
+  float: left;
+}
+.main-nav {
+  float: right;
+  list-style: none;
+  margin-right: 20px;
+  margin-top: 65px;
+}
+
+.main-nav li {
+  display: inline-block;
+  margin-left: 10px;
+}
+.main-nav li a:link,
+.main-nav li a:visited {
+  text-decoration: none;
+  padding: 5px 0px;
+  text-transform: uppercase;
+  color: #fff;
+  transition: border-bottom 0.5s;
+  border-bottom: 1px solid transparent;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+  border-bottom: 1px solid aqua;
+}
+
+/* mini css grid */
+.bigbox {
+  width: 1140px;
+  margin: 0 auto 5px auto;
+}
+
+.box {
+  float: left;
+  display: block;
+  padding: 1%;
+  margin: 3px 0 1px 1px;
+}
+.fullspan {
+  width: 98%;
+}
+.span21 {
+  width: 49.2%;
+}
+.span31 {
+  width: 32.26%;
+}
+
+.span32 {
+  width: 66.13%;
+}
+.span41 {
+  width: 23.8%;
+}
+.span42 {
+  width: 49.2%;
+}
+.span43 {
+  width: 74.6%;
+}
+.span3-center {
+  margin-left: 32.26%;
 }
