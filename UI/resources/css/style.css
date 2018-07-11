@@ -245,6 +245,10 @@ input[type="password"] {
   color: red;
   text-decoration: none;
 }
+textarea {
+  margin-bottom: 20px;
+  padding: 5px;
+}
 
 .footer {
   background: gray;
