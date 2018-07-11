@@ -36,7 +36,7 @@ h2::after {
 }
 
 #main-header {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
     url(../img/background.jpg);
   height: 100vh;
   background-position: center;
