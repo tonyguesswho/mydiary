@@ -6,15 +6,22 @@
     float: none;
   }
 
-  .main-nav {
+  .nav {
     float: none;
     width: 100%;
     font-size: 18px;
     margin: 2px auto 0 auto;
   }
 
-  header {
+  #main-header {
     text-align: center;
+  }
+  .header2 {
+    text-align: center;
+    height: 50px;
+  }
+  .nav2 {
+    padding-top: 15px;
   }
 
   .home-text {
@@ -35,6 +42,20 @@
     width: 80%;
     margin: 5px auto 25px auto;
   }
+  .span21,
+  .span31,
+  .span32,
+  .span41,
+  .span42,
+  .span43 {
+    width: 100%;
+  }
+  .bigbox {
+    width: 100%;
+  }
+  .span3-center {
+    margin: 3px auto 3px auto;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -48,6 +69,22 @@
     font-size: 150%;
     margin-bottom: 30px;
   }
+  .span41 {
+    width: 49.2%;
+  }
+  /* .span21,
+  .span31,
+  .span32,
+  .span42,
+  .span43 {
+    width: 100%;
+  }
+  .bigbox {
+    width: 100%;
+  }
+  .span3-center {
+    margin: 3px auto 3px auto;
+  } */
 }
 
 @media only screen and (max-width: 1120px) {
@@ -59,5 +96,8 @@
   .home-text h1 {
     font-size: 200%;
     margin-bottom: 30px;
+  }
+  .bigbox {
+    width: 100%;
   }
 }
