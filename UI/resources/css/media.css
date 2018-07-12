@@ -42,6 +42,13 @@
     width: 80%;
     margin: 5px auto 25px auto;
   }
+  .ebtn:link,
+  .ebtn:visited {
+    padding: 5px 5px;
+    display: block;
+    width: 80%;
+    margin: 5px auto 25px auto;
+  }
   .span21,
   .span31,
   .span32,
@@ -54,6 +61,9 @@
     width: 100%;
   }
   .span3-center {
+    margin: 3px auto 3px auto;
+  }
+  .span2-center {
     margin: 3px auto 3px auto;
   }
 }
@@ -85,6 +95,13 @@
   .span3-center {
     margin: 3px auto 3px auto;
   } */
+  .ebtn:link,
+  .ebtn:visited {
+    padding: 5px 5px;
+    display: block;
+    width: 80%;
+    margin: 5px auto 25px auto;
+  }
 }
 
 @media only screen and (max-width: 1120px) {
