@@ -1,3 +1,92 @@
+@media only screen and (max-width: 1200px) {
+  .home-text {
+    width: 100%;
+    margin: 3px auto 3px auto;
+    text-align: center;
+  }
+  .home-text h1 {
+    font-size: 200%;
+    margin-bottom: 30px;
+  }
+  .bigbox {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .home-text {
+    width: 100%;
+    margin: 3px auto 3px auto;
+    text-align: center;
+    font-size: 19px;
+  }
+  .home-text h1 {
+    font-size: 200%;
+    margin-bottom: 30px;
+  }
+  .span41 {
+    width: 49.2%;
+  }
+  .span21,
+  .span31,
+  .span32,
+  .span42,
+  .span43 {
+    width: 50%;
+  }
+  .bigbox {
+    width: 100%;
+  }
+
+  .span3-center {
+    margin-left: 24%;
+  }
+  .ebtn:link,
+  .ebtn:visited {
+    padding: 5px 5px;
+    display: block;
+    width: 80%;
+    margin: 5px auto 25px auto;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .home-text {
+    width: 100%;
+    margin: 3px auto 3px auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  .home-text h1 {
+    font-size: 200%;
+    margin-bottom: 30px;
+  }
+  .span41 {
+    width: 49.2%;
+  }
+  .span21,
+  .span31,
+  .span32,
+  .span42,
+  .span43 {
+    width: 70%;
+  }
+  .bigbox {
+    width: 100%;
+  }
+
+  .span3-center {
+    margin-left: 16%;
+  }
+  .ebtn:link,
+  .ebtn:visited {
+    padding: 5px 5px;
+    display: block;
+    width: 80%;
+    margin: 5px auto 25px auto;
+  }
+}
+
 @media only screen and (max-width: 480px) {
   .logo {
     width: auto;
@@ -65,56 +154,5 @@
   }
   .span2-center {
     margin: 3px auto 3px auto;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .home-text {
-    width: 100%;
-    margin: 3px auto 3px auto;
-    text-align: center;
-    font-size: 16px;
-  }
-  .home-text h1 {
-    font-size: 150%;
-    margin-bottom: 30px;
-  }
-  /* .span41 {
-    width: 49.2%;
-  } */
-  /* .span21,
-  .span31,
-  .span32,
-  .span42,
-  .span43 {
-    width: 100%;
-  }
-  .bigbox {
-    width: 100%;
-  }
-  .span3-center {
-    margin: 3px auto 3px auto;
-  } */
-  .ebtn:link,
-  .ebtn:visited {
-    padding: 5px 5px;
-    display: block;
-    width: 80%;
-    margin: 5px auto 25px auto;
-  }
-}
-
-@media only screen and (max-width: 1120px) {
-  .home-text {
-    width: 100%;
-    margin: 3px auto 3px auto;
-    text-align: center;
-  }
-  .home-text h1 {
-    font-size: 200%;
-    margin-bottom: 30px;
-  }
-  .bigbox {
-    width: 100%;
   }
 }
