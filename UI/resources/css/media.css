@@ -27,12 +27,18 @@
   .span41 {
     width: 49.2%;
   }
-  .span21,
+
   .span31,
   .span32,
   .span42,
   .span43 {
     width: 50%;
+  }
+  .span21 {
+    width: 60%;
+  }
+  .span2-center {
+    margin-left: 20%;
   }
   .bigbox {
     width: 100%;
@@ -77,6 +83,9 @@
 
   .span3-center {
     margin-left: 16%;
+  }
+  .span2-center {
+    margin-left: 15%;
   }
   .ebtn:link,
   .ebtn:visited {
