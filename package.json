@@ -1,0 +1,19 @@
+{
+  "name": "mydiary",
+  "version": "1.0.0",
+  "description": "An online diary platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonyguesswho/mydiary.git"
+  },
+  "author": "Anthony ugwu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tonyguesswho/mydiary/issues"
+  },
+  "homepage": "https://github.com/tonyguesswho/mydiary#readme"
+}
