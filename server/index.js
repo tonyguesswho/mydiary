@@ -5,8 +5,22 @@ app.use(express.json());
 
 const port = process.env.port || 3000;
 
-app.get('/', (req, res) => {
-  res.send('welcome');
+// data structure for diary entries
+const entries = [
+  {
+    id: 1,
+    title: 'sample title',
+    description: 'sample description'
+  },
+  {
+    id: 2,
+    title: 'sample title',
+    description: 'sample description'
+  }
+];
+
+app.get('/api/v1/entries', (req, res) => {
+  res.json(entries);
 });
 
 app.listen(port, () => {
