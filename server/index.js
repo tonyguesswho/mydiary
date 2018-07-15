@@ -20,7 +20,14 @@ const entries = [
 ];
 
 app.get('/api/v1/entries', (req, res) => {
-  res.json(entries);
+  res.status(200).json(entries);
+});
+
+app.get('/api/v1/entries/:id', (req, res) => {
+  const entryId = req.params.id;
+  const entry = entries.find(val => val.id === parseInt(entryId, 10));
+  if (!entry) return res.status(404).send('The entry with this id does not exist');
+  return res.json(entry);
 });
 
 app.listen(port, () => {
