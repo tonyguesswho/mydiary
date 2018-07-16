@@ -87,12 +87,18 @@ app.delete('/api/v1/entries/:id', (req, res) => {
   const entryId = req.params.id;
 
   const entry = entries.find(val => val.id === parseInt(entryId, 10));
-  if (!entry) return res.status(404).send('No diary entry with the give id');
+  if (!entry) return res.status(404).send('No diary entry with the given id');
 
   const entryIndex = entries.indexOf(entry);
   entries.splice(entryIndex, 1);
 
   return res.status(200).json(entry);
+});
+
+app.delete('/api/v1/entries/', (req, res) => {
+  entries.splice(0, entries.length);
+
+  return res.status(200).json(entries);
 });
 
 app.listen(port, () => {
