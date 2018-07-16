@@ -42,7 +42,7 @@ app.get('/api/v1/entries/:id', (req, res) => {
   const entryId = req.params.id;
   const entry = entries.find(val => val.id === parseInt(entryId, 10));
   if (!entry) return res.status(404).send('The entry with this id does not exist');
-  return res.json(entry);
+  return res.status(200).json(entry);
 });
 
 app.post('/api/v1/entries', (req, res) => {
@@ -60,10 +60,30 @@ app.post('/api/v1/entries', (req, res) => {
     description: req.body.description
   };
   entries.push(newEntry);
-  const entry = entries.find(val => val.id === parseInt(newId, 10));
+  const entry = entries.find(val => val.id === newId);
   return res.status(201).json(entry);
 });
 
+app.put('/api/v1/entries/:id', (req, res) => {
+  const entryId = req.params.id;
+
+  const entry = entries.find(val => val.id === parseInt(entryId, 10));
+  if (!entry) return res.status(404).send('No diary entry with the give id');
+
+  const { error } = validateEntry(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  const updatedEntry = {
+    title: req.body.title,
+    description: req.body.description
+  };
+  entry.title = updatedEntry.title;
+  entry.description = updatedEntry.description;
+
+  const finalEntry = entries.find(val => val.id === parseInt(entryId, 10));
+  return res.status(201).json(finalEntry);
+});
+
 app.listen(port, () => {
-  console.log(`app listening on port ${port}`);
+  // console.log(`app listening on port ${port}`);
 });
