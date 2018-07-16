@@ -1,3 +1,3 @@
 # mydiary
 
-An online Diary for users to pen down their thoughts and experiences
+An online Diary for users to write down their thoughts and experiences
