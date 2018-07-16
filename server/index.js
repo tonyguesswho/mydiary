@@ -80,8 +80,19 @@ app.put('/api/v1/entries/:id', (req, res) => {
   entry.title = updatedEntry.title;
   entry.description = updatedEntry.description;
 
-  const finalEntry = entries.find(val => val.id === parseInt(entryId, 10));
-  return res.status(201).json(finalEntry);
+  return res.status(200).json(entry);
+});
+
+app.delete('/api/v1/entries/:id', (req, res) => {
+  const entryId = req.params.id;
+
+  const entry = entries.find(val => val.id === parseInt(entryId, 10));
+  if (!entry) return res.status(404).send('No diary entry with the give id');
+
+  const entryIndex = entries.indexOf(entry);
+  entries.splice(entryIndex, 1);
+
+  return res.status(200).json(entry);
 });
 
 app.listen(port, () => {
