@@ -42,7 +42,7 @@ app.get('/api/v1/entries/:id', (req, res) => {
   const entryId = req.params.id;
   const entry = entries.find(val => val.id === parseInt(entryId, 10));
   if (!entry) return res.status(404).send('The entry with this id does not exist');
-  return res.json(entry);
+  return res.status(200).json(entry);
 });
 
 app.post('/api/v1/entries', (req, res) => {
@@ -65,5 +65,5 @@ app.post('/api/v1/entries', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`app listening on port ${port}`);
+  // console.log(`app listening on port ${port}`);
 });
