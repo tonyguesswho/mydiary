@@ -1,3 +1,3 @@
 # mydiary
 
-![Travis CI Build Status](the_image_url_here)
+![Travis CI Build Status](https://travis-ci.com/tonyguesswho/mydiary.svg?branch=server)
