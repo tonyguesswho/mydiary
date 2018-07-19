@@ -2,10 +2,10 @@
   "name": "mydiary",
   "version": "1.0.0",
   "description": "An online diary platform",
-  "main": "index.js",
+  "main": "build/bundle.js",
   "scripts": {
     "test": "mocha test/*.test.js",
-    "build": "webpack --mode development --config webpack.config.js",
+    "build": "webpack --mode production --config webpack.config.js",
     "start": " npm run build && node build/bundle.js",
     "coverage": "node node_modules/.bin/istanbul cover _mocha -- -R spec",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
