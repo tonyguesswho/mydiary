@@ -3,3 +3,12 @@ node_js:
  - "node"
 script: npm run coverage
 after_success: 'npm run coveralls'
+
+addons:
+    code_climate:
+        repo_token: "c74e7c4f1d93735bae54500b6f19d90049ab20e2f3a6c90fd0dec2b9121cc1a7"
+script: istanbul cover node_modules/mocha/bin/_mocha -- -R spec
+before_script:
+  - npm install codeclimate-test-reporter istanbul -g
+after_script:
+  - codeclimate-test-reporter < ./coverage/lcov.info
