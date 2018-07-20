@@ -1,26 +1,25 @@
-// const chai = require('chai');
+// const express = require('express');
 
-const expect = require('chai').expect;
+// const app = express();
 
-const supertest = require('supertest');
+const request = require('supertest');
 
-// const chaiHttp = require('chai-http');
+const { assert } = require('chai').assert;
 
-// const request = require('supertest');
+const { app } = require('../build/bundle.js');
 
-const { app } = require('./../build/bundle');
-
-const entries = require('../data/data');
-
-const server = supertest.agent('https://localhost:3000');
-
-describe('GET all entries', () => {
-  it('should get all entries', () => {
-    server
-      .get('/api/v1/entries')
-      .expect(404)
-      .expect(res => {
-        expect(res.body).toEqual({ a: 'd' });
+describe('GET /', () => {
+  it('responds with json', () => {
+    return request(app)
+      .get('/users')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .then(response => {
+        assert(response.body.message, 'Hello, world');
       });
   });
+});
+
+describe('Post routes', () => {
+  it('Adds a new diary entry', () => {});
 });
