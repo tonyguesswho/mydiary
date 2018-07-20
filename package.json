@@ -8,8 +8,7 @@
     "build": "webpack --mode development --config webpack.config.js",
     "start": " node build/bundle.js",
     "coverage": "node node_modules/.bin/istanbul cover _mocha -- -R spec",
-    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
-    "postinstall": "webpack -p --config webpack.config.js "
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
   "engines": {
     "node": "8.11.2"
