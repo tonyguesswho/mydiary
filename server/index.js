@@ -15,6 +15,8 @@ app.get('/', (req, res) => {
   res.send('welcome');
 });
 
-app.listen(port, '0.0.0.0');
+app.listen(port, () => {
+  console.log(`Express server listening on port:${port}`);
+});
 
 module.exports = { app };
