@@ -6,7 +6,7 @@ const request = require('supertest');
 
 const { assert } = require('chai').assert;
 
-const { app } = require('../build/bundle.js');
+//const { app } = require('../build/bundle.js');
 
 describe('GET /', () => {
   it('responds with json', () => {
