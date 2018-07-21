@@ -1,25 +1,26 @@
-// const express = require('express');
-
-// const app = express();
-
 const request = require('supertest');
 
-const { assert } = require('chai').assert;
+// const { assert } = require('chai').assert;
+// const { expect } = require('chai').expect;
 
-//const { app } = require('../build/bundle.js');
+// const app = require('../build/bundle.js');
 
-describe('GET /', () => {
-  it('responds with json', () => {
-    return request(app)
-      .get('/users')
+describe('GET /api/v1/entries', () => {
+  it('respond with json containing a list of all diary entries', done => {
+    request('localhost:3000')
+      .get('/api/v1/entries')
       .set('Accept', 'application/json')
-      .expect(200)
-      .then(response => {
-        assert(response.body.message, 'Hello, world');
-      });
+      .expect('Content-Type', /json/)
+      .expect(200, done);
   });
 });
 
-describe('Post routes', () => {
-  it('Adds a new diary entry', () => {});
+describe('GET /api/v1/entries/id', () => {
+  it('respond with json a diary entry with the id', done => {
+    request('localhost:3000')
+      .get('/api/v1/entries/1')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200, done);
+  });
 });
