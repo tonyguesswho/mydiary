@@ -4,9 +4,6 @@ import entries from '../data/data';
 
 const router = Router();
 
-// data structure for diary entries
-
-// validating entry
 function validateEntry(body) {
   const schema = {
     title: joi
