@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import joi from 'joi';
+
 import entriesController from '../controllers/entries'
 
 const router = Router();

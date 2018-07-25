@@ -1,5 +1,6 @@
 
 import entries from '../data/data';
+import joi from 'joi';
 
 function validateEntry(body) {
     const schema = {
