@@ -27,17 +27,18 @@ RETURNING
 const updateOneEntry = (id, title, description) =>
   db.one(
     `
-      UPDATE
-        entries
-      SET
-        (title, description)=($2, $3,)
-      WHERE
-        id=$1
-      RETURNING
-        *
-    `,
-    [id, title, description]
+UPDATE
+  entries
+SET
+  (title, description)=($1, $2)
+WHERE
+  id=$3
+RETURNING
+  *
+`,
+    [title, description, id]
   );
+
 const deleteEntry = id =>
   db.one(
     `
