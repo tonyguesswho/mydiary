@@ -1,20 +1,6 @@
-import joi from 'joi';
-
 import query from '../database/query';
 
-function validateEntry(body) {
-  const schema = {
-    title: joi
-      .string()
-      .min(1)
-      .required(),
-    description: joi
-      .string()
-      .min(1)
-      .required()
-  };
-  return joi.validate(body, schema);
-}
+import validateEntry from '../validation/validate';
 
 function getAllEntries(req, res) {
   query
@@ -37,7 +23,6 @@ function getOneEntry(req, res) {
     .then(data => {
       res.status(200).json({
         status: 'success',
-        message: 'Entry updated succesfully',
         data
       });
     })
@@ -89,7 +74,7 @@ function deleteOneEntry(req, res) {
     .then(data => {
       res.status(200).json({
         status: 'success',
-        message: 'Entry updated succesfully',
+        message: 'Entry deleted succesfully',
         data
       });
     })
