@@ -6,7 +6,8 @@ CREATE DATABASE entries;
 CREATE TABLE entries (
   ID SERIAL PRIMARY KEY,
   title TEXT,
-  description  VARCHAR
+  description  VARCHAR,
+  userId int
   
 );
 
