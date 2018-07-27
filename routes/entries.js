@@ -6,7 +6,7 @@ import { checkAuth } from '../middleware/auth';
 
 const router = Router();
 
-router.get('/', checkAuth, entriesController.getAllEntries);
+router.get('/', entriesController.getAllEntries);
 
 router.get('/:id', entriesController.getOneEntry);
 
