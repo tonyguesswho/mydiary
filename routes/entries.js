@@ -2,13 +2,15 @@ import { Router } from 'express';
 
 import entriesController from '../controllers/entries';
 
+import { checkAuth } from '../middleware/auth';
+
 const router = Router();
 
-router.get('/', entriesController.getAllEntries);
+router.get('/', checkAuth, entriesController.getAllEntries);
 
 router.get('/:id', entriesController.getOneEntry);
 
-router.post('/', entriesController.addEntry);
+router.post('/', checkAuth, entriesController.addEntry);
 
 router.put('/:id', entriesController.updateEntry);
 

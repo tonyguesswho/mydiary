@@ -32,8 +32,8 @@ function getOneEntry(req, res) {
 }
 
 function addEntry(req, res) {
-  const { error } = validateEntry(req.body);
-  if (error) res.status(400).send(error.details[0].message);
+  // const { error } = validateEntry(req.body);
+  // if (error) res.status(400).send(error.details[0].message);
   query
     .addOneEntry(req.body.title, req.body.description)
     .then(data => {

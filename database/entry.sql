@@ -10,5 +10,3 @@ CREATE TABLE entries (
   
 );
 
-INSERT INTO entries (title, description)
-  VALUES ('Widget 1', 'nnnnnndddd'), ('Wid','ffff'), ('Wi', 'fffg');
