@@ -6,14 +6,14 @@ import { checkAuth } from '../middleware/auth';
 
 const router = Router();
 
-router.get('/', entriesController.getAllEntries);
+router.get('/', checkAuth, entriesController.getAllEntries);
 
-router.get('/:id', entriesController.getOneEntry);
+router.get('/:id', checkAuth, entriesController.getOneEntry);
 
 router.post('/', checkAuth, entriesController.addEntry);
 
-router.put('/:id', entriesController.updateEntry);
+router.put('/:id', checkAuth, entriesController.updateEntry);
 
-router.delete('/:id', entriesController.deleteOneEntry);
+router.delete('/:id', checkAuth, entriesController.deleteOneEntry);
 
 export default router;
