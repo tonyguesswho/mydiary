@@ -5,7 +5,6 @@ describe('GET /api/v1/entries', () => {
     request('localhost:3000')
       .get('/')
       .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
       .expect(200, done);
   });
 });
@@ -15,7 +14,6 @@ describe('GET /api/v1/entries/id', () => {
     request('localhost:3000')
       .get('/')
       .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
       .expect(200, done);
   });
 });
