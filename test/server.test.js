@@ -1,16 +1,14 @@
+import { should, use, request } from "chai";
+import chaiHttp from "chai-http";
+import  app  from "../server/index";
 
-const chai = require('chai');
-const chaiHttp = require('chai-http')
+should();
+use(chaiHttp);
 
-
-
-chai.should();
-chai.use(chaiHttp);
-
-describe('POST: /api/v1/auth/signup', () => {
-  it('should respond with an error if the email field is empty', (done) => {
-    chai.request("localhost:3000")
-      .get('/')
+describe("POST: /api/v1/auth/signup", () => {
+  it("should respond with an error if the email field is empty", done => {
+    request(app)
+      .get("/")
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.json;
