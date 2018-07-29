@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/entries", entries);
 app.use("/", home);
-app.use("/user", user);
+app.use("/auth", user);
 
 const port = process.env.PORT || 3000;
 

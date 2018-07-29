@@ -6,7 +6,7 @@ import { db } from "../database/connect";
 chai.should();
 chai.use(chaiHttp);
 
-describe("POST: /user/signup", () => {
+describe("POST: /auth/login", () => {
   before(done => {
     db.manyOrNone("delete from users")
       .then(() => {}, done())
@@ -15,21 +15,21 @@ describe("POST: /user/signup", () => {
   it("should login a user if there are no error", done => {
     const signupData = {
       username: "tonyguesswho",
-      email: "anthonyu234@gmail.com",
+      email: "tonyu234@gmail.com",
       password: "yagilevel"
     };
     const signinData = {
-      email: "anthonyu234@gmail.com",
+      email: "tonyu234@gmail.com",
       password: "yagilevel"
     };
     chai
       .request(app)
-      .post("/user/signup")
+      .post("/auth/signup")
       .send(signupData)
       .end(() => {
         chai
           .request(app)
-          .post("/user/signin")
+          .post("/auth/login")
           .send(signinData)
           .end((err, res) => {
             res.should.have.status(200);

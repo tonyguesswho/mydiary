@@ -5,14 +5,14 @@ import app from "../server/index";
 chai.should();
 chai.use(chaiHttp);
 
-describe("POST: /user/signin", () => {
+describe("POST: /auth/login", () => {
   it("should respond with an error if the email is undefined", done => {
     const signupData = {
       password: "password"
     };
     chai
       .request(app)
-      .post("/user/signin")
+      .post("/auth/login")
       .send(signupData)
       .end((err, res) => {
         res.should.have.status(400);
@@ -25,7 +25,7 @@ describe("POST: /user/signin", () => {
   });
 });
 
-describe("POST: /user/signin", () => {
+describe("POST: /auth/login", () => {
   it("should respond with an error if the email is invalid", done => {
     const signupData = {
       password: "password",
@@ -33,7 +33,7 @@ describe("POST: /user/signin", () => {
     };
     chai
       .request(app)
-      .post("/user/signin")
+      .post("/auth/login")
       .send(signupData)
       .end((err, res) => {
         res.should.have.status(400);
@@ -46,7 +46,7 @@ describe("POST: /user/signin", () => {
   });
 });
 
-describe("POST: /user/signin", () => {
+describe("POST: /auth/login", () => {
   it("should respond with an error if the password is invalid", done => {
     const signupData2 = {
       email: "anthonyu234@gmail.com",
@@ -54,7 +54,7 @@ describe("POST: /user/signin", () => {
     };
     chai
       .request(app)
-      .post("/user/signin")
+      .post("/auth/login")
       .send(signupData2)
       .end((err, res) => {
         res.should.have.status(400);
