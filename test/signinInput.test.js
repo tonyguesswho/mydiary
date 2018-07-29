@@ -25,7 +25,6 @@ describe("POST: /user/signin", () => {
   });
 });
 
-
 describe("POST: /user/signin", () => {
   it("should respond with an error if the email is invalid", done => {
     const signupData = {
@@ -65,5 +64,5 @@ describe("POST: /user/signin", () => {
         res.body.message.should.be.a("string");
         done();
       });
-   });
- });
+  });
+});

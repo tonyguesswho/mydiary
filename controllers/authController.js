@@ -34,7 +34,7 @@ function signup(req, res) {
         [user.email, user.username, user.password]
       )
         .then(() => {
-          res.status(200).json({
+          res.status(201).json({
             message: 'Signup successful'
           });
         })
