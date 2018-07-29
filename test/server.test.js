@@ -1,19 +1,20 @@
-const request = require('supertest');
 
-describe('GET /api/v1/entries', () => {
-  it('respond with json containing a list of all diary entries', done => {
-    request('localhost:3000')
-      .get('/')
-      .set('Accept', 'application/json')
-      .expect(200, done);
-  });
-});
+const chai = require('chai');
+const chaiHttp = require('chai-http')
 
-describe('GET /api/v1/entries/id', () => {
-  it('respond with json a diary entry with the id', done => {
-    request('localhost:3000')
+
+
+chai.should();
+chai.use(chaiHttp);
+
+describe('POST: /api/v1/auth/signup', () => {
+  it('should respond with an error if the email field is empty', (done) => {
+    chai.request("localhost:3000")
       .get('/')
-      .set('Accept', 'application/json')
-      .expect(200, done);
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        done();
+      });
   });
 });
