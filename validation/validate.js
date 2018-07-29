@@ -1,4 +1,4 @@
-import joi from 'joi';
+import joi from "joi";
 
 function validateEntry(body) {
   const schema = {
@@ -14,4 +14,28 @@ function validateEntry(body) {
   return joi.validate(body, schema);
 }
 
-export default validateEntry;
+function validateUser(body) {
+  const schema = {
+    email: joi
+      .string()
+      .email()
+      .required(),
+    username: joi
+      .string()
+      .alphanum()
+      .min(3)
+      .max(30),
+    password: joi
+      .string()
+      .regex(/^[a-zA-Z0-9]{3,30}$/)
+      .required()
+  };
+  return joi.validate(body, schema);
+}
+
+// export default validateEntry;
+
+module.exports = {
+  validateEntry,
+  validateUser
+};

@@ -1,13 +1,13 @@
-import { Router } from 'express';
+import { Router } from "express";
 
-import authController from '../controllers/authController';
+import authController from "../controllers/authController";
 
-require('dotenv').config();
+require("dotenv").config();
 
 const router = Router();
 
-router.post('/signup', authController.signup);
+router.post("/signup", authController.signup);
 
-router.post('/signin', authController.signin);
+router.post("/signin", authController.signin);
 
 export default router;
