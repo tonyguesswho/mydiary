@@ -7,9 +7,10 @@ chai.should();
 chai.use(chaiHttp);
 
 describe("POST: /user/signup", () => {
-  before(done => { 
-      db.manyOrNone('delete from users').then(()=>{},done()).catch(e=>{
-      })
+  before(done => {
+    db.manyOrNone("delete from users")
+      .then(() => {}, done())
+      .catch(e => {});
   });
   it("should register a user if there are no errors", done => {
     const signupData = {

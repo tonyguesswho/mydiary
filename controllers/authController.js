@@ -1,15 +1,15 @@
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
-import { db } from '../database/connect';
-import validator from '../validation/validate';
+import { db } from "../database/connect";
+import validator from "../validation/validate";
 
-require('dotenv').config();
+require("dotenv").config();
 
 function signup(req, res) {
   const { error } = validator.validateUser(req.body);
-  if (error) res.status(400).json({message: error.details[0].message});
+  if (error) res.status(400).json({ message: error.details[0].message });
   bcrypt.hash(req.body.password, 10, (err, hash) => {
     if (err) {
       res.status(500).json({
@@ -35,7 +35,7 @@ function signup(req, res) {
       )
         .then(() => {
           res.status(201).json({
-            message: 'Signup successful'
+            message: "Signup successful"
           });
         })
         .catch(e => {
@@ -47,16 +47,15 @@ function signup(req, res) {
 
 function signin(req, res) {
   const { error } = validator.validateUser(req.body);
-  if (error) res.status(400).json({message: error.details[0].message});
-  db.one('SELECT * FROM users WHERE email = $1', [req.body.email])
+  if (error) res.status(400).json({ message: error.details[0].message });
+  db.one("SELECT * FROM users WHERE email = $1", [req.body.email])
     .then(user => {
       bcrypt.compare(req.body.password, user.password, (err, result) => {
         if (err) {
           res.status(400).json({
-            message: 'Auth failed'
+            message: "Wrong email or password"
           });
-        }
-        if (result) {
+        } else if (result) {
           const token = jwt.sign(
             {
               email: user.email,
@@ -64,18 +63,20 @@ function signin(req, res) {
             },
             process.env.JWT_KEY,
             {
-              expiresIn: '1h'
+              expiresIn: "1h"
             }
           );
           res.status(200).json({
-            message: 'Auth successful',
+            message: "Login successful",
             token
           });
         }
       });
     })
     .catch(e => {
-      res.json(e);
+      res.status(400).json({
+        message: "Wrong email or password"
+      });
     });
 }
 
