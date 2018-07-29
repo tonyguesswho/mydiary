@@ -6,7 +6,7 @@ import { db } from "../database/connect";
 chai.should();
 chai.use(chaiHttp);
 
-describe("POST: /user/signup", () => {
+describe("POST: /auth/login", () => {
   before(done => {
     db.manyOrNone("delete from users")
       .then(() => {}, done())
@@ -24,12 +24,12 @@ describe("POST: /user/signup", () => {
     };
     chai
       .request(app)
-      .post("/user/signup")
+      .post("/auth/signup")
       .send(signupData)
       .end(() => {
         chai
           .request(app)
-          .post("/user/signin")
+          .post("/auth/login")
           .send(signinData)
           .end((err, res) => {
             res.should.have.status(400);
@@ -37,13 +37,14 @@ describe("POST: /user/signup", () => {
             res.body.should.be.a("object");
             res.body.should.have.property("message");
             res.body.message.should.eql("Wrong email or password");
-            done();
+            
           });
+          done();
       });
   });
 });
 
-describe("POST: /user/signin", () => {
+describe("POST: /auth/login", () => {
   before(done => {
     db.manyOrNone("delete from users")
       .then(() => {}, done())
@@ -61,12 +62,12 @@ describe("POST: /user/signin", () => {
     };
     chai
       .request(app)
-      .post("/user/signup")
+      .post("/auth/signup")
       .send(signupData)
       .end(() => {
         chai
           .request(app)
-          .post("/user/signin")
+          .post("/auth/login")
           .send(signinData)
           .end((err, res) => {
             res.should.have.status(400);

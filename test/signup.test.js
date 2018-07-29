@@ -6,7 +6,7 @@ import { db } from "../database/connect";
 chai.should();
 chai.use(chaiHttp);
 
-describe("POST: /user/signup", () => {
+describe("POST: /auth/signup", () => {
   before(done => {
     db.manyOrNone("delete from users")
       .then(() => {}, done())
@@ -20,7 +20,7 @@ describe("POST: /user/signup", () => {
     };
     chai
       .request(app)
-      .post("/user/signup")
+      .post("/auth/signup")
       .send(signupData)
       .end((err, res) => {
         res.should.have.status(201);
