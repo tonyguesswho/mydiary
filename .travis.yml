@@ -14,11 +14,8 @@ before_script:
   - psql -U postgres -f ./database/entry.sql
 script:
   - npm run build
-  - node ./build/bundle.js &
-  - npm run test 
   - npm run coverage
 after_success:
-  - curl http://localhost:3000/close
   - 'npm run coveralls'
   
 
