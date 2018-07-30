@@ -11,11 +11,6 @@ describe("POST: /api/v1/entries", () => {
     db.manyOrNone("delete from users")
       .then(() => {}, done())
       .catch(e => {});
-      before(done => {
-        db.manyOrNone("delete from entries")
-          .then(() => {}, done())
-          .catch(e => {});
-      });
   });
   it("should add a diary entry when there is no error", done => {
     const signupData = {
