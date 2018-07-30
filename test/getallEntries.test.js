@@ -1,13 +1,24 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
 import app from "../server/index";
+import { db } from "../database/connect";
 
 chai.should();
 chai.use(chaiHttp);
 
 describe("POST: /api/v1/entries", () => {
+  before(done => {
+    db.manyOrNone("delete from users")
+      .then(() => {}, done())
+      .catch(e => {});
+      before(done => {
+        db.manyOrNone("delete from entries")
+          .then(() => {}, done())
+          .catch(e => {});
+      });
+  });
     
-  it("should add a diary entry when there is no error", done => {
+  it("should  get all diary entries", done => {
     const signupData = {
       username: "madiba",
       password: "Password",
