@@ -7,7 +7,7 @@ const checkAuth = (req, res, next) => {
 
     const decoded = jwt.verify(token, process.env.JWT_KEY);
     req.userData = decoded;
-    next(req.userData);
+    next();
   } catch (error) {
     res.status(401).json({
       message: "Invalid token"
