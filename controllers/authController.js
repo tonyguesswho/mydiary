@@ -61,7 +61,7 @@ function signin(req, res) {
               email: user.email,
               userId: user.id
             },
-            "gragra",
+            process.env.JWT_KEY,
             {
               expiresIn: "1h"
             }

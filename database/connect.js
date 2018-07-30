@@ -2,7 +2,7 @@ const pgp = require('pg-promise')();
 
 require('dotenv').config();
 
-const db = pgp('postgres://postgres:guesswho@localhost:5432/mydiaryapi');
+const db = pgp(process.env.DATABASE_URL);
 
 module.exports = {
   db
