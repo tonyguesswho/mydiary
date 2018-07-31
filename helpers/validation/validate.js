@@ -33,8 +33,6 @@ function validateUser(body) {
   return joi.validate(body, schema);
 }
 
-// export default validateEntry;
-
 module.exports = {
   validateEntry,
   validateUser

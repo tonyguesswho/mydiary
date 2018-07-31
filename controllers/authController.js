@@ -2,8 +2,8 @@ import bcrypt from "bcrypt";
 
 import jwt from "jsonwebtoken";
 
-import { db } from "../database/connect";
-import validator from "../validation/validate";
+import { db } from "../models/connect";
+import validator from "../helpers/validation/validate";
 
 require("dotenv").config();
 
@@ -21,7 +21,6 @@ function signup(req, res) {
         username: req.body.username,
         password: hash
       };
-      // CREATE USER
       db.one(
         `
                 INSERT INTO
@@ -38,8 +37,11 @@ function signup(req, res) {
             message: "Signup successful"
           });
         })
-        .catch(e => {
-          res.json(e);
+        .catch(() => {
+          res.json({
+            status: "error",
+            message: "Sign up unsuccessful"
+          });
         });
     }
   });
@@ -73,7 +75,7 @@ function signin(req, res) {
         }
       });
     })
-    .catch(e => {
+    .catch(() => {
       res.status(400).json({
         message: "Wrong email or password"
       });
