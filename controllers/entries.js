@@ -11,7 +11,6 @@ function getAllEntries(req, res) {
         status: "success",
         data
       });
-      console.log(data)
     })
     .catch(err => {
       res.json(err);
@@ -46,6 +45,7 @@ function addEntry(req, res) {
         message: "Entry Created succesfully",
         data
       });
+      console.log(data)
     })
     .catch(err => {
       res.json(err);
