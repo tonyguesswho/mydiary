@@ -10,7 +10,7 @@ before_script:
   - npm install
   - psql -c 'drop database if exists mydiaryapi;' -U postgres
   - psql -c 'create database mydiaryapi;' -U postgres
-  - psql \c mydiaryapi -U postgres -f
+  - psql -f \c mydiaryapi -U postgres 
   - psql -U postgres -f ./database/user.sql
   - psql -U postgres -f ./database/entry.sql
 script:
