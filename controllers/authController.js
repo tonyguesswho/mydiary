@@ -39,7 +39,7 @@ function signup(req, res) {
         })
         .catch(() => {
           res.json({
-            status: "error",
+            status: "fail",
             message: "Sign up unsuccessful"
           });
         });
