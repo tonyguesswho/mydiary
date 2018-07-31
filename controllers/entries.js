@@ -11,6 +11,7 @@ function getAllEntries(req, res) {
         status: "success",
         data
       });
+      console.log(data)
     })
     .catch(err => {
       res.json(err);
