@@ -40,12 +40,13 @@ function addEntry(req, res) {
   query
     .addOneEntry(req.body.title, req.body.description, id)
     .then(data => {
+      console.log(data)
       res.status(201).json({
         status: "success",
         message: "Entry Created succesfully",
         data
       });
-      console.log(data)
+      
     })
     .catch(err => {
       res.json(err);
