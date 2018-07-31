@@ -5,11 +5,11 @@
   "main": "build/bundle.js",
   "scripts": {
     "test": " nyc mocha --require babel-core/register test/*.test.js --exit",
-    "build": "webpack --mode production --config webpack.config.js",
+    "build": "webpack --mode production --config webpack.config.babel.js",
     "start": " node build/bundle.js",
     "coverage": "npm test && nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls",
-    "postinstall": "webpack --mode production --config webpack.config.js",
+    "postinstall": "webpack --mode production --config webpack.config.babel.js",
     "test-local": "mocha --require babel-core/register test/*.test.js --exit"
   },
   "engines": {

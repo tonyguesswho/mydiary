@@ -1,7 +1,7 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
 import app from "../server/index";
-import { db } from "../database/connect";
+import { db } from "../models/connect";
 
 chai.should();
 chai.use(chaiHttp);
