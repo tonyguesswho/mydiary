@@ -52,8 +52,11 @@ function addEntry(req, res) {
         data
       });
     })
-    .catch(err => {
-      res.json(err);
+    .catch(() => {
+      res.json({
+        status: "fail",
+        message: "Entry not created",
+      });
     });
 }
 
@@ -74,7 +77,7 @@ function updateEntry(req, res) {
     })
     .catch(() => {
       res.json({
-        status: "error",
+        status: "fail",
         message: "Entry not updated"
       });
     });
@@ -87,14 +90,14 @@ function deleteOneEntry(req, res) {
     .deleteEntry(id, userid)
     .then(data => {
       res.status(200).json({
-        status: "success",
+        status: "fail",
         message: "Entry deleted succesfully",
         data
       });
     })
     .catch(() => {
       res.json({
-        status: "error",
+        status: "fail",
         message: "Entry not deleted"
       });
     });

@@ -1,7 +1,7 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
 import app from "../server/index";
-import { db } from "../database/connect";
+import { db } from "../models/connect";
 
 chai.should();
 chai.use(chaiHttp);
@@ -19,7 +19,7 @@ describe("POST: /auth/login", () => {
       password: "yagilevel"
     };
     const signinData = {
-      email: "anthonyu23@gmail.com", // wrong email
+      email: "anthonyu23@gmail.com",
       password: "yagilevel"
     };
     chai
@@ -58,7 +58,7 @@ describe("POST: /auth/login", () => {
     };
     const signinData = {
       email: "anthonyu234@gmail.com",
-      password: "yagilevel12" // wrong password
+      password: "yagilevel12" 
     };
     chai
       .request(app)
