@@ -7,12 +7,12 @@ chai.should();
 chai.use(chaiHttp);
 
 describe("POST: /api/v1/entries", () => {
-  before(done => {
-    db.manyOrNone("delete from users")
-      .then(() => {
-        db.manyOrNone("delete from entries")
-      },done())
-  });
+  // before(done => {
+  //   db.manyOrNone("delete from users")
+  //     .then(() => {
+  //       db.manyOrNone("delete from entries")
+  //     },done())
+  // });
   it("should add a diary entry when there is no error", done => {
     const signupData = {
       username: "madiba",
