@@ -19,10 +19,7 @@ describe("POST: /api/v1/entries", () => {
       password: "Password",
       email: "sample@gmail.com"
     };
-    const entryData = {
-      title: "test title",
-      description: "test description"
-    };
+    
     const loginData = {
       password: "Password",
       email: "sample@gmail.com"
@@ -41,6 +38,10 @@ describe("POST: /api/v1/entries", () => {
             res.should.have.status(200);
             res.body.should.have.property("token");
             const { token } = res.body;
+            const entryData = {
+              title: "test title",
+              description: "test description"
+            };
             chai
               .request(app)
               .post("/api/v1/entries")
