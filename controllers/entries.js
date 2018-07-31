@@ -1,6 +1,6 @@
-import query from "../database/query";
+import query from "../models/query";
 
-import validator from "../validation/validate";
+import validator from "../helpers/validation/validate";
 
 function getAllEntries(req, res) {
   const userid = req.userData.userId;
@@ -12,8 +12,11 @@ function getAllEntries(req, res) {
         data
       });
     })
-    .catch(err => {
-      res.json(err);
+    .catch(() => {
+      res.json({
+        status: "error",
+        message: "No entry found"
+      });
     });
 }
 
@@ -28,8 +31,11 @@ function getOneEntry(req, res) {
         data
       });
     })
-    .catch(err => {
-      res.json(err);
+    .catch(() => {
+      res.json({
+        status: "error",
+        message: "No entry found"
+      });
     });
 }
 
@@ -66,8 +72,11 @@ function updateEntry(req, res) {
         data
       });
     })
-    .catch(err => {
-      res.json(err);
+    .catch(() => {
+      res.json({
+        status: "error",
+        message: "Entry not updated"
+      });
     });
 }
 
@@ -83,8 +92,11 @@ function deleteOneEntry(req, res) {
         data
       });
     })
-    .catch(err => {
-      res.json(err);
+    .catch(() => {
+      res.json({
+        status: "error",
+        message: "Entry not deleted"
+      });
     });
 }
 
