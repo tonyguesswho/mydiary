@@ -90,7 +90,7 @@ function deleteOneEntry(req, res) {
     .deleteEntry(id, userid)
     .then(data => {
       res.status(200).json({
-        status: "fail",
+        status: "success",
         message: "Entry deleted succesfully",
         data
       });
