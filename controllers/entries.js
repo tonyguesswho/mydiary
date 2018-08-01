@@ -41,7 +41,7 @@ function getOneEntry(req, res) {
 
 function addEntry(req, res) {
   const { error } = validator.validateEntry(req.body);
-  if (error) res.status(400).json({ message: error.details[0].message });
+  if (error) return res.status(400).json({ message: error.details[0].message });
   const id = req.userData.userId;
   query
     .addOneEntry(req.body.title, req.body.description, id)
@@ -62,7 +62,7 @@ function addEntry(req, res) {
 
 function updateEntry(req, res) {
   const { error } = validator.validateEntry(req.body);
-  if (error) res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send(error.details[0].message);
   const { title, description } = req.body;
   const userid = req.userData.userId;
 
