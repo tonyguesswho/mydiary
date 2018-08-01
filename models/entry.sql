@@ -1,3 +1,4 @@
+\c mydiaryapi
 CREATE TABLE entries (
   ID SERIAL PRIMARY KEY,
   title TEXT,
