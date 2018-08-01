@@ -17,7 +17,7 @@ function signup(req, res) {
         error: "Internal server error"
       });
     } else {
-      const user = {
+      const userData = {
         email: req.body.email,
         username: req.body.username,
         password: hash
@@ -31,13 +31,37 @@ function signup(req, res) {
                 RETURNING
                   *
               `,
-        [user.email, user.username, user.password]
+        [userData.email, userData.username, userData.password]
       )
-        .then(() => {
-          res.status(201).json({
-            status: "success",
-            message: "Signup successful"
-          });
+        .then(user => {
+          bcrypt.compare(
+            req.body.password,
+            userData.password,
+            (err, result) => {
+              if (err) {
+                res.status(400).json({
+                  status: "fail",
+                  message: "Signup unsuccesful"
+                });
+              } else if (result) {
+                const token = jwt.sign(
+                  {
+                    email: user.email,
+                    userId: user.id
+                  },
+                  process.env.JWT_KEY,
+                  {
+                    expiresIn: "8h"
+                  }
+                );
+                res.status(200).json({
+                  status: "success",
+                  message: "Signup successful",
+                  token
+                });
+              }
+            }
+          );
         })
         .catch(() => {
           res.json({

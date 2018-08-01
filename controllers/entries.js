@@ -13,9 +13,9 @@ function getAllEntries(req, res) {
       });
     })
     .catch(() => {
-      res.json({
+      res.status(500).json({
         status: "error",
-        message: "No entry found"
+        message: "Internal server error"
       });
     });
 }
@@ -34,7 +34,7 @@ function getOneEntry(req, res) {
     .catch(() => {
       res.json({
         status: "error",
-        message: "No entry found"
+        message: "Entry Not found"
       });
     });
 }
@@ -55,7 +55,7 @@ function addEntry(req, res) {
     .catch(() => {
       res.json({
         status: "fail",
-        message: "Entry not created",
+        message: "Entry not created"
       });
     });
 }
