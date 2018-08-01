@@ -13,7 +13,7 @@ function signup(req, res) {
   bcrypt.hash(req.body.password, 10, (err, hash) => {
     if (err) {
       res.status(500).json({
-        error: err
+        error: "Internal server error"
       });
     } else {
       const user = {
@@ -65,7 +65,7 @@ function signin(req, res) {
             },
             process.env.JWT_KEY,
             {
-              expiresIn: "1h"
+              expiresIn: "8h"
             }
           );
           res.status(200).json({
