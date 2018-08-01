@@ -13,6 +13,7 @@ function signup(req, res) {
   bcrypt.hash(req.body.password, 10, (err, hash) => {
     if (err) {
       res.status(500).json({
+        status:"fail",
         error: "Internal server error"
       });
     } else {
