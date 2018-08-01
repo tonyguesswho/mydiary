@@ -13,7 +13,7 @@ function signup(req, res) {
   bcrypt.hash(req.body.password, 10, (err, hash) => {
     if (err) {
       res.status(500).json({
-        status:"fail",
+        status: "fail",
         error: "Internal server error"
       });
     } else {
@@ -35,6 +35,7 @@ function signup(req, res) {
       )
         .then(() => {
           res.status(201).json({
+            status: "success",
             message: "Signup successful"
           });
         })
@@ -56,6 +57,7 @@ function signin(req, res) {
       bcrypt.compare(req.body.password, user.password, (err, result) => {
         if (err) {
           res.status(400).json({
+            status: "fail",
             message: "Wrong email or password"
           });
         } else if (result) {
@@ -70,6 +72,7 @@ function signin(req, res) {
             }
           );
           res.status(200).json({
+            status: "success",
             message: "Login successful",
             token
           });
@@ -78,6 +81,7 @@ function signin(req, res) {
     })
     .catch(() => {
       res.status(400).json({
+        status: "success",
         message: "Wrong email or password"
       });
     });
