@@ -47,14 +47,15 @@ function signup(req, res) {
                 const token = jwt.sign(
                   {
                     email: user.email,
-                    userId: user.id
+                    userId: user.id,
+                    username: user.username
                   },
                   process.env.JWT_KEY,
                   {
                     expiresIn: "8h"
                   }
                 );
-                res.status(200).json({
+                res.status(201).json({
                   status: "success",
                   message: "Signup successful",
                   token
@@ -88,11 +89,12 @@ function signin(req, res) {
           const token = jwt.sign(
             {
               email: user.email,
-              userId: user.id
+              userId: user.id,
+              username: user.username
             },
             process.env.JWT_KEY,
             {
-              expiresIn: "8h"
+              expiresIn: "24h"
             }
           );
           res.status(200).json({

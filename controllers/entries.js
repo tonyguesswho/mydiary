@@ -4,11 +4,13 @@ import validator from "../helpers/validation/validate";
 
 function getAllEntries(req, res) {
   const userid = req.userData.userId;
+  const { username } = req.userData;
   query
     .getAllEntries(userid)
     .then(data => {
       res.status(200).json({
         status: "success",
+        username,
         data
       });
     })
@@ -43,6 +45,7 @@ function addEntry(req, res) {
   const { error } = validator.validateEntry(req.body);
   if (error) return res.status(400).json({ message: error.details[0].message });
   const id = req.userData.userId;
+  
   query
     .addOneEntry(req.body.title, req.body.description, id)
     .then(data => {
