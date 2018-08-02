@@ -16,7 +16,8 @@ describe("POST: /auth/login", () => {
     const signupData = {
       username: "tonyguesswho",
       email: "tonyu234@gmail.com",
-      password: "yagilevel"
+      password: "yagilevel",
+      confirmPassword: "yagilevel"
     };
     const signinData = {
       email: "tonyu234@gmail.com",
