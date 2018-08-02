@@ -1,0 +1,1 @@
+document.getElementById("totalEntry").innerText=localStorage.total;

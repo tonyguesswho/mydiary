@@ -29,39 +29,35 @@
         </nav>
 
     </header>
-    <section class="edit-entry">
-
-        <div class="box span31 span3-center card">
-            <h2>Edit Diary Entry </h2>
-            <form action="" method="post">
-                <div class="fullspan">
-                    <label for="title">Title:</label>
+    <section class="edit-entry" id="editBox">
+            <div class="box span31 span3-center card">
+                    <h2>Edit Diary Entry </h2>
+                    <form action="" method="PUT" id="editEntry" >
+                        <div class="fullspan">
+                            <label for="title">Title:</label>
+                        </div>
+                        <div class="fullspan">
+                            <input type="text" name="title" id="title" placeholder="Entry title" value="">
+                        </div>
+                        <div class="fullspan">
+                            <label for="textarea">Express Yourself:</label>
+                        </div>
+                        <div class="fullspan">
+                            <textarea name="textarea" id="textarea" rows="10"></textarea>
+                        </div>
+                
+                        <input type="submit" value="Edit Entry">
+                
+                
+                    </form>
+                
+                
                 </div>
-                <div class="fullspan">
-                    <input type="text" name="title" id="title" placeholder="Entry title">
-                </div>
-                <div class="fullspan">
-                    <label for="textarea">Express Yourself:</label>
-                </div>
-                <div class="fullspan">
-                    <textarea name="textarea" id="textarea" rows="10"></textarea>
-                </div>
-
-                <input type="submit" value="Edit Entry">
-
-
-            </form>
-
-
-        </div>
-
-
-
     </section>
     <div class="clearfix"></div>
 
-
-    <script src="resources/js/index.js"></script>
+    
+    <script src="resources/js/edit.js"></script>
 </body>
 
 </html>
