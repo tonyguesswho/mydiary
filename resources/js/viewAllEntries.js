@@ -1,10 +1,9 @@
   
-
-document.getElementById('btn').addEventListener("click",getEntries)
+const token=localStorage.getItem('token')
 const request = new Request('https://mydiary-api.herokuapp.com/api/v1/entries', {
     headers: new Headers({
       'Content-Type': 'application/json',
-      "Authorization":'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFudGhvbnl1MjM0QGdtYWlsLmNvbSIsInVzZXJJZCI6MywiaWF0IjoxNTMzMTMxNjA2LCJleHAiOjE1MzMxNjA0MDZ9.brBaJOzz9_d5skupEH6dJNustGFgP673BdJis1dJ7d8'
+      "Authorization":token
     })
   })
 
@@ -17,6 +16,7 @@ function getEntries(){
     }).then(val=>{
         console.log(val.data)
         result=val.data
+        localStorage.total=result.length;
         display()
     })
 
@@ -63,13 +63,15 @@ function display(){
              let finaldate=formatDate(day,month,year);
              output+=
              `
-             <div class="box card span41">
+             <div class="box card span41" id="anEntry">
                 <h4>${val.title}</h4>
-                <a href="entry.html" class="ebtn ebtn-filled">View</a>
-                <a href="edit_entry.html" class="ebtn ebtn-transparent">Edit</a>
+                <a href="entry.html?entryid=${val.id}" class="ebtn ebtn-filled">View</a>
+                <a href="edit_entry.html?entryid=${val.id}" class="ebtn ebtn-transparent">Edit</a>
                 <div class="entry-date">
                     <p>${finaldate}</p>
                 </div>
+                
+                
 
             </div>
              
@@ -80,4 +82,4 @@ function display(){
  
      }
 
-     getEntries()
+getEntries()
