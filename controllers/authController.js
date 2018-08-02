@@ -3,13 +3,10 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 import { db } from "../models/connect";
-import validator from "../helpers/validation/validate";
 
 require("dotenv").config();
 
 function signup(req, res) {
-  const { error } = validator.validateUser(req.body);
-  if (error) res.status(400).json({ message: error.details[0].message });
   bcrypt.hash(req.body.password, 10, (err, hash) => {
     if (err) {
       res.status(500).json({
@@ -75,15 +72,13 @@ function signup(req, res) {
 }
 
 function signin(req, res) {
-  const { error } = validator.validateUser(req.body);
-  if (error) res.status(400).json({ message: error.details[0].message });
   db.one("SELECT * FROM users WHERE email = $1", [req.body.email])
     .then(user => {
       bcrypt.compare(req.body.password, user.password, (err, result) => {
         if (err) {
-          res.status(400).json({
+          res.status(500).json({
             status: "fail",
-            message: "Wrong email or password"
+            message: "Internal server error"
           });
         } else if (result) {
           const token = jwt.sign(
@@ -107,7 +102,7 @@ function signin(req, res) {
     })
     .catch(() => {
       res.status(400).json({
-        status: "success",
+        status: "error",
         message: "Wrong email or password"
       });
     });

@@ -16,6 +16,7 @@ describe("POST: /api/v1/entries", () => {
     const signupData = {
       username: "madiba",
       password: "Password",
+      confirmPassword: "Password",
       email: "sample@gmail.com"
     };
     const entryData = {

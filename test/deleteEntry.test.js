@@ -16,6 +16,7 @@ describe("POST: /api/v1/entries", () => {
     const signupData = {
       username: "madiba",
       password: "Password",
+      confirmPassword: "Password",
       email: "sample@gmail.com"
     };
     const entryData = {
@@ -60,8 +61,9 @@ describe("POST: /api/v1/entries", () => {
                     res.should.have.status(200);
                     res.body.should.have.property("message");
                     res.body.message.should.eql("Entry deleted succesfully");
-                    done()
+                
                 })
+                done();
               });
           });
       });

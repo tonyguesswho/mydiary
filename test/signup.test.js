@@ -10,13 +10,14 @@ describe("POST: /auth/signup", () => {
   before(done => {
     db.manyOrNone("delete from users")
       .then(() => {}, done())
-      .catch(e => {});
+      .catch(() => {});
   });
   it("should register a user if there are no errors", done => {
     const signupData = {
-      username: "tonyguesswho",
-      email: "anthonyu234@gmail.com",
-      password: "yagilevel"
+      username: "madibal",
+      password: "Password",
+      confirmPassword: "Password",
+      email: "samplel@gmail.com"
     };
     chai
       .request(app)
