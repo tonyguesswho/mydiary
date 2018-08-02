@@ -30,6 +30,7 @@ function getOneEntry(req, res) {
     .then(data => {
       res.status(200).json({
         status: "success",
+        message: "successfully Got one entry",
         data
       });
     })
