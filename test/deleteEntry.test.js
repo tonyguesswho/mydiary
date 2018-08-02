@@ -12,7 +12,7 @@ describe("POST: /api/v1/entries", () => {
       .then(() => {}, done())
       .catch(e => {});
   });
-  it("should add a diary entry when there is no error", done => {
+  it("should delete an entry if the correct id is provided", done => {
     const signupData = {
       username: "madiba",
       password: "Password",
@@ -54,10 +54,12 @@ describe("POST: /api/v1/entries", () => {
                 const { id } = res.body.data;
                 chai
                 .request(app)
-                .delete("/api/v1/entries/id")
+                .delete(`/api/v1/entries/${id}`)
                 .set("Authorization", token)
                 .end((err,res)=>{
                     res.should.have.status(200);
+                    res.body.should.have.property("message");
+                    res.body.message.should.eql("Entry deleted succesfully");
                     done()
                 })
               });
