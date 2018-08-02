@@ -11,12 +11,14 @@ let result;
 function getEntries(){
     fetch(request)
     .then((res)=>{
+
         return res.json()
         
     }).then(val=>{
-        console.log(val.data)
+
         result=val.data
         localStorage.total=result.length;
+        localStorage.username=val.username;
         display()
     })
 
