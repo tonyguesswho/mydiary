@@ -1,6 +1,7 @@
-import { db } from './connect';
+import { db } from "./connect";
 
-const getAllEntries = userId => db.any('SELECT * FROM entries WHERE userid = $1', [userId]);
+const getAllEntries = userId =>
+  db.any("SELECT * FROM entries WHERE userid = $1", [userId]);
 
 const getOneEntry = (userid, id) =>
   db.one(
@@ -33,7 +34,7 @@ SET
   (title, description)=($1, $2)
 WHERE
   userid=$4
-AND id=$3
+AND id=$3 
 RETURNING
   *
 `,
@@ -53,6 +54,7 @@ const deleteEntry = (id, userid) =>
     `,
     [userid, id]
   );
+  
 export default {
   getAllEntries,
   getOneEntry,

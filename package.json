@@ -13,8 +13,7 @@
     "test-local": "mocha --require babel-core/register test/*.test.js --exit"
   },
   "engines": {
-    "node": "8.11.2",
-    "npm":"5.6.1"
+    "node": "8.11.2"
   },
   "repository": {
     "type": "git",
@@ -54,10 +53,11 @@
   },
   "dependencies": {
     "bcrypt": "^3.0.0",
+    "cors": "^2.8.4",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "joi": "^13.4.0",
     "jsonwebtoken": "^8.3.0",
-    "pg-promise": "^8.4.5"
+    "pg-promise": "^8.4.5",
+    "swagger-ui-express": "^3.0.10"
   }
 }

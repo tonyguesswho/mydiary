@@ -1,21 +1,21 @@
 import query from "../models/query";
 
-import validator from "../helpers/validation/validate";
-
 function getAllEntries(req, res) {
   const userid = req.userData.userId;
+  const { username } = req.userData;
   query
     .getAllEntries(userid)
     .then(data => {
       res.status(200).json({
         status: "success",
+        username,
         data
       });
     })
     .catch(() => {
-      res.json({
+      res.status(500).json({
         status: "error",
-        message: "No entry found"
+        message: "Internal server error"
       });
     });
 }
@@ -28,20 +28,19 @@ function getOneEntry(req, res) {
     .then(data => {
       res.status(200).json({
         status: "success",
+        message: "successfully Got one entry",
         data
       });
     })
     .catch(() => {
       res.json({
         status: "error",
-        message: "No entry found"
+        message: "Entry Not found"
       });
     });
 }
 
 function addEntry(req, res) {
-  const { error } = validator.validateEntry(req.body);
-  if (error) res.status(400).json({ message: error.details[0].message });
   const id = req.userData.userId;
   query
     .addOneEntry(req.body.title, req.body.description, id)
@@ -55,30 +54,46 @@ function addEntry(req, res) {
     .catch(() => {
       res.json({
         status: "fail",
-        message: "Entry not created",
+        message: "Entry not created"
       });
     });
 }
 
 function updateEntry(req, res) {
-  const { error } = validator.validateEntry(req.body);
-  if (error) res.status(400).send(error.details[0].message);
   const { title, description } = req.body;
   const userid = req.userData.userId;
-
   query
-    .updateOneEntry(parseInt(req.params.id, 10), title, description, userid)
+    .getOneEntry(userid, parseInt(req.params.id, 10))
     .then(data => {
-      res.status(200).json({
-        status: "success",
-        message: "Entry updated succesfully",
-        data
-      });
+      // reference - https://stackoverflow.com/questions/11072467/javascript-relative-time-24-hours-ago-etc-as-time
+      const created =
+        new Date().getTime() - new Date(data.created_at).getTime();
+      if (created > 86400000) {
+        res.status(403).json({
+          status:"fail",
+          message: "Entry can no longer be updated"
+        });
+      } else {
+        query
+          .updateOneEntry(
+            parseInt(req.params.id, 10),
+            title,
+            description,
+            userid
+          )
+          .then(data2 => {
+            res.status(200).json({
+              status: "success",
+              message: "Entry updated succesfully",
+              data: data2
+            });
+          });
+      }
     })
-    .catch(() => {
-      res.json({
+    .catch(e => {
+      res.status(500).json({
         status: "fail",
-        message: "Entry not updated"
+        message: "Entry not updated, Internal server error"
       });
     });
 }
@@ -90,15 +105,15 @@ function deleteOneEntry(req, res) {
     .deleteEntry(id, userid)
     .then(data => {
       res.status(200).json({
-        status: "fail",
+        status: "success",
         message: "Entry deleted succesfully",
         data
       });
     })
     .catch(() => {
-      res.json({
+      res.status(500).json({
         status: "fail",
-        message: "Entry not deleted"
+        message: "Internal server error"
       });
     });
 }

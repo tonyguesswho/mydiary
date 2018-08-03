@@ -12,7 +12,7 @@ describe("POST: /auth/login", () => {
       .then(() => {}, done())
       .catch(e => {});
   });
-  it("should login a user if there are no error", done => {
+  it("Throw password error", done => {
     const signupData = {
       username: "tonyguesswho",
       email: "tonyu234@gmail.com",
@@ -21,7 +21,7 @@ describe("POST: /auth/login", () => {
     };
     const signinData = {
       email: "tonyu234@gmail.com",
-      password: "yagilevel"
+      password: "yagilevel9"
     };
     chai
       .request(app)
@@ -33,14 +33,14 @@ describe("POST: /auth/login", () => {
           .post("/auth/login")
           .send(signinData)
           .end((err, res) => {
-            res.should.have.status(200);
+            res.should.have.status(400);
             res.should.be.json;
             res.body.should.be.a("object");
-            res.body.should.have.property("token");
             res.body.should.have.property("message");
-            res.body.message.should.eql("Login successful");
-            done();
+            res.body.message.should.eql("Wrong email or password");
+            
           });
+          done();
       });
   });
 });
