@@ -6,9 +6,12 @@
 
 An Diary API that enables users to document their thoughts, ideas and expereiences
 
-Users can create a diary entry
-Users can update a diary entry 
-Users can delete a diary entry
+Users can create a diary entry,
+
+Users can update a diary entry,
+
+Users can delete a diary entry,
+
 Users can read diary details
 
 Getting Started
