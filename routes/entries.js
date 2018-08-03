@@ -11,7 +11,7 @@ const router = Router();
 
 router.get("/", checkAuth, entriesController.getAllEntries);
 
-router.get("/:id", checkAuth, entriesController.getOneEntry);
+router.get("/:id", checkUrl, checkAuth, entriesController.getOneEntry);
 
 router.post(
   "/",

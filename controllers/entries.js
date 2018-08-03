@@ -62,38 +62,20 @@ function addEntry(req, res) {
 function updateEntry(req, res) {
   const { title, description } = req.body;
   const userid = req.userData.userId;
+
   query
-    .getOneEntry(userid, parseInt(req.params.id, 10))
+    .updateOneEntry(parseInt(req.params.id, 10), title, description, userid)
     .then(data => {
-      // reference - https://stackoverflow.com/questions/11072467/javascript-relative-time-24-hours-ago-etc-as-time
-      const created =
-        new Date().getTime() - new Date(data.created_at).getTime();
-      if (created > 86400000) {
-        res.status(403).json({
-          status:"fail",
-          message: "Entry can no longer be updated"
-        });
-      } else {
-        query
-          .updateOneEntry(
-            parseInt(req.params.id, 10),
-            title,
-            description,
-            userid
-          )
-          .then(data2 => {
-            res.status(200).json({
-              status: "success",
-              message: "Entry updated succesfully",
-              data: data2
-            });
-          });
-      }
+      res.status(200).json({
+        status: "success",
+        message: "Entry updated succesfully",
+        data
+      });
     })
-    .catch(e => {
-      res.status(500).json({
+    .catch(() => {
+      res.json({
         status: "fail",
-        message: "Entry not updated, Internal server error"
+        message: "Entry not updated"
       });
     });
 }
