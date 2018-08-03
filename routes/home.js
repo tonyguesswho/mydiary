@@ -1,8 +1,8 @@
-import { Router } from 'express';
+import { Router } from "express";
 
 const router = Router();
-router.get('', (req, res) => {
-  res.json({ message: 'Mydiary API' });
+router.get("", (req, res) => {
+  res.json({ message: "Mydiary API" });
 });
 
 export default router;
