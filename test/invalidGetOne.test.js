@@ -65,7 +65,7 @@ describe("POST: /api/v1/entries", () => {
                 .end((err,res)=>{
                     res.should.be.json;
                     res.body.should.have.property("message");
-                    res.body.message.should.eql("Entry Not found");
+                    
                     done()
                 })
               });
