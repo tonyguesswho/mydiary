@@ -9,7 +9,9 @@ chai.use(chaiHttp);
 describe("POST: /api/v1/entries", () => {
   before(done => {
     db.manyOrNone("delete from users")
-      .then(() => {}, done())
+      .then(() => {}).then(()=>{
+        db.manyOrNone("delete from entries")
+      },done())
       .catch(e => {});
   });
   it("should add a diary entry when there is no error", done => {

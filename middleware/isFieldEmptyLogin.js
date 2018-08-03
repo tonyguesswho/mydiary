@@ -3,8 +3,7 @@ const loginEmpty = (req, res, next) => {
 
   if (!email.trim() || !password.trim()) {
     return res.status(422).json({
-      statusCode: 422,
-      status: "error",
+      status: "fail",
       message: "Provide email and password."
     });
   }

@@ -9,7 +9,9 @@ chai.use(chaiHttp);
 describe("POST: /api/v1/entries", () => {
   before(done => {
     db.manyOrNone("delete from users")
-      .then(() => {}, done())
+      .then(() => {}).then(()=>{
+        db.manyOrNone("delete from entries")
+      },done())
       .catch(e => {});
   });
   it("should delete an entry if the correct id is provided", done => {
@@ -54,16 +56,15 @@ describe("POST: /api/v1/entries", () => {
                 res.body.should.have.property("data");
                 const { id } = res.body.data;
                 chai
-                .request(app)
-                .delete(`/api/v1/entries/${id}`)
-                .set("Authorization", token)
-                .end((err,res)=>{
+                  .request(app)
+                  .delete(`/api/v1/entries/${id}`)
+                  .set("Authorization", token)
+                  .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.have.property("message");
                     res.body.message.should.eql("Entry deleted succesfully");
-                
-                })
-                done();
+                    done();
+                  });
               });
           });
       });

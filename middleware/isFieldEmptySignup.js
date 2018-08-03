@@ -3,8 +3,7 @@ const isFieldEmpty = (req, res, next) => {
 
   if (!username.trim() || !email.trim() || !password.trim()) {
     return res.status(400).send({
-      statusCode: 400,
-      status: "error",
+      status: "fail",
       message: "Invalid field input"
     });
   }
