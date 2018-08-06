@@ -1,14 +1,14 @@
-document.getElementById('signup').addEventListener('submit',signup)
+// import {validateFields} from '../js/helpers/validate';
+
+document.getElementById('signUp').addEventListener('submit',signUp);
 
 
-
-function signup(e){
-    e.preventDefault();
+function signUp(e){
+    e.preventDefault()
     let email=document.getElementById('email').value;
     let username=document.getElementById('username').value;
     let password=document.getElementById('password').value;
-    let Cpassword=document.getElementById('Cpassword').value;
-    validate(password,Cpassword)
+    let cPassword=document.getElementById('cPassword').value;
 
     fetch('https://mydiary-api.herokuapp.com/auth/signup',{
         method:'POST',
@@ -21,11 +21,10 @@ function signup(e){
         if(data.status=="fail"){
 
         }else{
-            localStorage.setItem("token", data.token);
+            localStorage.token=data.token;
             console.log(data)
             redirect: window.location.replace("entries.html")   
         }
         
     })
-
 }
