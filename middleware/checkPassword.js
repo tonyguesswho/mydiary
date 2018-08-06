@@ -5,9 +5,8 @@ const checkPassword = (req, res, next) => {
     return next();
   }
   return res.status(400).json({
-    statusCode: 400,
-    status: "error",
-    message: "Password do not match"
+    status: "fail",
+    message: "Passwords do not match"
   });
 };
 
