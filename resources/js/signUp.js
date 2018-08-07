@@ -20,7 +20,7 @@ function signUp(e){
         body:JSON.stringify({email,username,password,confirmPassword})
     }).then(res =>res.json()).then(data=>{
          if(data.status=="fail"){
-           return  showMessage(data,'fail')
+           showMessage(data,'fail')
          }else{
             localStorage.token=data.token;
             redirect: window.location.replace("entries.html")   

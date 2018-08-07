@@ -40,3 +40,10 @@ function showMessage(data,status){
         document.querySelector(`.msg_output_${status}`).remove()
     }, 5000);
 }
+
+document.getElementById('logout').addEventListener('click',logout)
+function logout(){
+    // localStorage.setItem('token',undefined)/
+    delete localStorage.token;
+    redirect: window.location.replace("index.html")  
+}
