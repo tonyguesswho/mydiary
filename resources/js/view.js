@@ -1,6 +1,6 @@
 
 const token=localStorage.getItem('token')
-if(token =="expired"){
+if(!token){
     redirect: window.location.replace("signin.html")  
 }
 let querySearch=decodeURIComponent(window.location.search)
@@ -9,7 +9,7 @@ let  entryId=parseInt(qs)
 let displayResult;
 function singleView(e){
     
-    fetch(`http://localhost:3000/api/v1/entries/${entryId}`,{
+    fetch(`https://mydiary-api.herokuapp.com/api/v1/entries/${entryId}`,{
         method:'GET',
         headers:{
             'Accept':'application/json, text/plain, */*',
@@ -84,6 +84,6 @@ function formatDate(day,month,year) {
 
 document.getElementById('logout').addEventListener('click',logout)
 function logout(){
-    localStorage.token='expired'
+    delete localStorage.token;
     redirect: window.location.replace("index.html")  
 }
