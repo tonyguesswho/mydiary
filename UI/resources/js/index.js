@@ -5,7 +5,7 @@ if(token){
 document.getElementById('myDiary').addEventListener('click',checkToken)
 
 function checkToken(){
-    if(token =="expired"){
+    if(!token){
         redirect: window.location.replace("signin.html")  
     }
 }

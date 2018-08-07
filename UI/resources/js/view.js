@@ -19,7 +19,7 @@ function singleView(e){
     }).then(res =>res.json()).then(data=>{
         
         if(data.status=="fail"){
-            console.log('not good')
+            alert(data.message)
         }else{
            displayResult=data.data;  
           let date=prettyDate()
