@@ -11,7 +11,7 @@ function signUp(e){
     let confirmPassword=document.getElementById('confirmPassword').value;
     
 
-    fetch('http://localhost:3000/auth/signup',{
+    fetch('https://mydiary-api.herokuapp.com/auth/signup',{
         method:'POST',
         headers:{
             'Accept':'application/json, text/plain, */*',
@@ -19,14 +19,21 @@ function signUp(e){
         },
         body:JSON.stringify({email,username,password,confirmPassword})
     }).then(res =>res.json()).then(data=>{
-        if(data.status=="fail"){
-            alert(data.message)
-
-        }else{
+         if(data.status=="fail"){
+           return  showMessage(data,'fail')
+         }else{
             localStorage.token=data.token;
-            console.log(data)
-             redirect: window.location.replace("entries.html")   
-        }
-        
+            redirect: window.location.replace("entries.html")   
+         }
     })
+}
+function showMessage(data,status){
+    const position=document.getElementById('signUpBox');
+    position.insertAdjacentHTML('afterbegin',`<p class="span31 span3-center" id='msg'>${data.message}</p>`)
+    msgPosition=document.getElementById('msg');
+    msgPosition.className=`msg_output_${status} span31 span3-center`
+
+    setTimeout(() => {
+        document.querySelector(`.msg_output_${status}`).remove()
+    }, 5000);
 }

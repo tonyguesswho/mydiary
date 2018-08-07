@@ -1,10 +1,10 @@
 // import { checkToken } from './helpers/checkToken';
-const checkToken =require('./helpers/checkToken');
+// const checkToken =require('./helpers/checkToken');
 const token=localStorage.getItem('token')
-if(token =="expired"){
+if(!token){
     redirect: window.location.replace("signin.html")  
 }
-const request = new Request('http://localhost:3000/api/v1/entries', {
+const request = new Request('https://mydiary-api.herokuapp.com/api/v1/entries', {
     headers: new Headers({
       'Content-Type': 'application/json',
       "Authorization":token
@@ -93,6 +93,6 @@ getEntries()
 
 document.getElementById('logout').addEventListener('click',logout)
 function logout(){
-    localStorage.token='expired'
+    delete localStorage.token;
     redirect: window.location.replace("index.html")  
 }

@@ -321,4 +321,16 @@ input[type="time"] {
   width: 150px;
   padding: 10px;
 }
+.msg_output_fail{
+  background-color:#dd4949;
+  margin-top: 3px;
+  padding: 4px;
+  color: white;
+}
+.msg_output_success{
+  background-color: #1abc9c;
+  margin-top: 3px;
+  padding: 4px;
+  color: white;
+}
 
