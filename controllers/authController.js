@@ -31,35 +31,31 @@ function signup(req, res) {
         [userData.email, userData.username, userData.password]
       )
         .then(user => {
-          bcrypt.compare(
-            req.body.password,
-            userData.password,
-            (err, result) => {
-              if (err) {
-                res.status(400).json({
-                  status: "fail",
-                  message: "Signup unsuccesful"
-                });
-              } else if (result) {
-                const token = jwt.sign(
-                  {
-                    email: user.email,
-                    userId: user.id,
-                    username: user.username
-                  },
-                  process.env.JWT_KEY,
-                  {
-                    expiresIn: "8h"
-                  }
-                );
-                res.status(201).json({
-                  status: "success",
-                  message: "Signup successful",
-                  token
-                });
-              }
+          bcrypt.compare(req.body.password, userData.password, (er, result) => {
+            if (er) {
+              res.status(400).json({
+                status: "fail",
+                message: "Signup unsuccesful"
+              });
+            } else if (result) {
+              const token = jwt.sign(
+                {
+                  email: user.email,
+                  userId: user.id,
+                  username: user.username
+                },
+                process.env.JWT_KEY,
+                {
+                  expiresIn: "24h"
+                }
+              );
+              res.status(201).json({
+                status: "success",
+                message: "Signup successful",
+                token
+              });
             }
-          );
+          });
         })
         .catch(() => {
           res.json({
@@ -79,6 +75,11 @@ function signin(req, res) {
           res.status(500).json({
             status: "fail",
             message: "Internal server error"
+          });
+        } else if (!result) {
+          res.status(400).json({
+            status: "fail",
+            message: "Wrong email or password"
           });
         } else if (result) {
           const token = jwt.sign(
@@ -102,7 +103,7 @@ function signin(req, res) {
     })
     .catch(() => {
       res.status(400).json({
-        status: "error",
+        status: "fail",
         message: "Wrong email or password"
       });
     });

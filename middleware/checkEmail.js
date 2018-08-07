@@ -8,8 +8,7 @@ const checkEmail = (req, res, next) => {
     return next();
   }
   return res.status(400).json({
-    statusCode: 400,
-    status: "error",
+    status: "fail",
     message: "Invalid Email Address"
   });
 };
