@@ -1,4 +1,5 @@
-
+import logout from './helpers/logout';
+import showMessage from './helpers/showMessage';
 const token=localStorage.getItem('token')
 if(!token){
     redirect: window.location.replace("signin.html")  
@@ -30,20 +31,4 @@ function add(e){
 
 }
 
-function showMessage(data,status){
-    const position=document.getElementById('messageBox');
-    position.insertAdjacentHTML('afterbegin',`<p class="span31 span3-center" id='msg'>${data.message}</p>`)
-    msgPosition=document.getElementById('msg');
-    msgPosition.className=`msg_output_${status} span31 span3-center`
-
-    setTimeout(() => {
-        document.querySelector(`.msg_output_${status}`).remove()
-    }, 5000);
-}
-
 document.getElementById('logout').addEventListener('click',logout)
-function logout(){
-    // localStorage.setItem('token',undefined)/
-    delete localStorage.token;
-    redirect: window.location.replace("index.html")  
-}

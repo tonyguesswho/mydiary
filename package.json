@@ -1,0 +1,33 @@
+{
+  "name": "mydiary",
+  "version": "1.0.0",
+  "description": "An online Diary for users to pen down their thoughts and experiences",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "swagger-ui-express": "^3.0.10"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  },
+  "scripts": {
+    "test": "mocha",
+    "build": "webpack --mode production --config webpack.config.babel.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonyguesswho/mydiary.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tonyguesswho/mydiary/issues"
+  },
+  "homepage": "https://github.com/tonyguesswho/mydiary#readme"
+}

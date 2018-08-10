@@ -1,5 +1,6 @@
-// import { checkToken } from './helpers/checkToken';
-// const checkToken =require('./helpers/checkToken');
+import {formatDate} from './helpers/display';
+import logout from './helpers/logout';
+
 const token=localStorage.getItem('token')
 if(!token){
     redirect: window.location.replace("signin.html")  
@@ -28,32 +29,6 @@ function getEntries(){
 
 
 }
-// gotten from https://stackoverflow.com/questions/13627308/add-st-nd-rd-and-th-ordinal-suffix-to-a-number
-function ordinal_suffix_of(i) {
-    var j = i % 10,
-        k = i % 100;
-    if (j == 1 && k != 11) {
-        return i + "st";
-    }
-    if (j == 2 && k != 12) {
-        return i + "nd";
-    }
-    if (j == 3 && k != 13) {
-        return i + "rd";
-    }
-    return i + "th";
-}
-function formatDate(day,month,year) {
-    const monthNames = [
-      "January", "February", "March",
-      "April", "May", "June", "July",
-      "August", "September", "October",
-      "November", "December"
-    ];
-    let dayWithSuffix=ordinal_suffix_of(day)
-    return `${dayWithSuffix}  ${monthNames[parseInt(month)-1]} ${year}`;
-  }
-  
 
 function display(){
     let output='' 
@@ -92,7 +67,3 @@ getEntries()
 
 
 document.getElementById('logout').addEventListener('click',logout)
-function logout(){
-    delete localStorage.token;
-    redirect: window.location.replace("index.html")  
-}

@@ -1,11 +1,13 @@
+import logout from './helpers/logout';
+import showMessage from './helpers/showMessage';
 const token=localStorage.getItem('token')
+
 if(!token){
     redirect: window.location.replace("signin.html")  
 }
 let qs=decodeURIComponent(window.location.search)
 qs=qs.substring(1).split('=')[1]
 let  entryId=parseInt(qs)
-// let token=localStorage.getItem('token')
 let displayResult;
 function singleView(){
     
@@ -19,7 +21,7 @@ function singleView(){
     }).then(res =>res.json()).then(data=>{
         
         if(data.status=="fail"){
-            console.log('not good')
+            showMessage(data,'fail')
         }else{
            displayResult=data.data;  
          values()
@@ -66,19 +68,3 @@ function edit(e){
 }
 
 document.getElementById('logout').addEventListener('click',logout)
-function logout(){
-    delete localStorage.token
-    redirect: window.location.replace("index.html")  
-}
-
-
-function showMessage(data,status){
-    const position=document.getElementById('editBox');
-    position.insertAdjacentHTML('afterbegin',`<p class="span31 span3-center" id='msg'>${data.message}</p>`)
-    msgPosition=document.getElementById('msg');
-    msgPosition.className=`msg_output_${status} span31 span3-center`
-
-    setTimeout(() => {
-        document.querySelector(`.msg_output_${status}`).remove()
-    }, 5000);
-}
