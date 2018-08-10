@@ -1,6 +1,6 @@
-const pgp = require('pg-promise')();
+const pgp = require("pg-promise")();
 
-require('dotenv').config();
+require("dotenv").config();
 
 const db = pgp(process.env.DATABASE_URL);
 

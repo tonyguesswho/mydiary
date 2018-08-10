@@ -14,7 +14,7 @@ function getAllEntries(req, res) {
     })
     .catch(() => {
       res.status(500).json({
-        status: "error",
+        status: "fail",
         message: "Internal server error"
       });
     });
@@ -34,7 +34,7 @@ function getOneEntry(req, res) {
     })
     .catch(() => {
       res.json({
-        status: "error",
+        status: "fail",
         message: "Entry Not found"
       });
     });
