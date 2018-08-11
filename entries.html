@@ -15,6 +15,10 @@
 </head>
 
 <body class="bg">
+      <!--CSS Spinner-->
+<div class="spinner-wrapper">
+        <div class="spinner"></div>
+ </div>
     <header class="header2">
 
         <nav>
@@ -51,6 +55,23 @@
 
 
     <script src="public/js/allEntries.entry.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    <script>
+      
+      //Preloader
+      $(window).on("load", function() {
+      preloaderFadeOutTime = 9000;
+      function hidePreloader() {
+      var preloader = $('.spinner-wrapper');
+      preloader.fadeOut(preloaderFadeOutTime);
+      }
+      hidePreloader();
+      });
+      
+      </script>
 </body>
 
 </html>
