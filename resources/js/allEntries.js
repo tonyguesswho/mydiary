@@ -38,7 +38,8 @@ function display(){
              let extractDay=rawDate[2].split('')
              let first=extractDay[0];
              let second=extractDay[1];
-             let day=parseInt(second);
+             let fs=first+second;
+             let day=parseInt(fs)
              let month=rawDate[1];
              let year=rawDate[0]
              let finaldate=formatDate(day,month,year);

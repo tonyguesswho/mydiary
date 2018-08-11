@@ -1,16 +1,21 @@
 const prettyDate=(displayResult)=>{
+    let inputDay;
     let rawDate=displayResult.created_at.split('-');
     
     let extractDay=rawDate[2].split('')
+    // console.log(extractDay)
     let first=extractDay[0];
     let second=extractDay[1];
-    let day=parseInt(second);
+    let fs=first+second;
+    let day=parseInt(fs)
     let month=rawDate[1];
     let year=rawDate[0]
+    
     let finaldate=formatDate(day,month,year);
         return finaldate;
 }
 const formatDate=(day,month,year)=>{
+   
     const monthNames = [
         "January", "February", "March",
         "April", "May", "June", "July",
