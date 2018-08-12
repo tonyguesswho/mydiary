@@ -1,7 +1,9 @@
 import { db } from "./connect";
 
 const getAllEntries = userId =>
-  db.any("SELECT * FROM entries WHERE userid = $1", [userId]);
+  db.any("SELECT * FROM entries WHERE userid = $1 ORDER BY created_at DESC", [
+    userId
+  ]);
 
 const getOneEntry = (userid, id) =>
   db.one(
@@ -54,7 +56,7 @@ const deleteEntry = (id, userid) =>
     `,
     [userid, id]
   );
-  
+
 export default {
   getAllEntries,
   getOneEntry,

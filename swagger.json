@@ -1,0 +1,579 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Mydiary API",
+    "description": "An API for developing an online diary",
+    "contact": {
+      "email": "anthonyugwu234@gmail.com"
+    }
+  },
+  "host": "https://mydiary-api.herokuapp.com",
+  "tags": [
+    {
+      "name": "Entry",
+      "description": "All operations involving diary entries"
+    },
+    {
+      "name": "User",
+      "description": "Operations about user"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/api/v1/entries": {
+      "get": {
+        "tags": [
+          "Entry"
+        ],
+        "summary": "Get all diary entries",
+        "description": "Returns all diary entries",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "Authentication token",
+            "required": true,
+            "type": "string"
+            
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " ALl diary entries",
+            "schema": {
+              "type": "array",
+              "example":[{
+                "status": "success",
+                "username": "username",
+                "data": [
+                    {
+                        "id": 322,
+                        "title": "one description",
+                        "description": "two test 2",
+                        "userid": 752,
+                        "created_at": "2018-08-09T16:13:28.337Z",
+                        "updated_at": "2018-08-09T16:13:28.337Z"
+                    }
+                ]
+            }]
+            }
+          },
+          "401":{
+            "description":"Invalid token",
+            "example":{"message":"Invalid token"}
+          },
+          "500":{
+            "description":"Internal server error",
+            "example":{
+              "status": "fail",
+              "message": "Internal server error"
+            }
+          }
+
+        }
+      },
+      "post": {
+        "tags": [
+          "Entry"
+        ],
+        "summary": "Create a diary entry",
+        "description": "Creates a diary entry",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "Authentication token",
+            "required": true,
+            "type": "string"
+            
+          },
+          {
+            "name": "title",
+            "in": "body",
+            "description": "Entry title",
+            "required": true,
+            "type": "string"
+            
+          },
+          {
+            "name": "description",
+            "in": "body",
+            "description": "Entry description",
+            "required": true,
+            "type": "string"
+            
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": " Created a diary entries",
+            "schema": {
+              "type": "object",
+              "example":{
+                "status": "success",
+                "message": "Entry Created succesfully",
+                "data": {
+                    "id": 323,
+                    "title": "one description",
+                    "description": "two test 2",
+                    "userid": 752,
+                    "created_at": "2018-08-10T04:32:45.291Z",
+                    "updated_at": "2018-08-10T04:32:45.291Z"
+                }
+            }
+            }
+          },
+          "401":{
+            "description":"Invalid token",
+            "example":{"message":"Invalid token"}
+          },
+          "500":{
+            "description":"Internal server error",
+            "example":{
+              "status": "fail",
+              "message": "Internal server error"
+            }
+          },
+          "400":{
+            "description":"Undefined field",
+            "example":{
+              "status": "fail",
+              "message": "All fields are required"
+            }
+          },
+          "400":{
+            "description":"Missing required fields",
+            "example":{
+              "status": "fail",
+              "message": "All fields are required"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/entries/{entry_id}": {
+      "get": {
+        "tags": [
+          "Entry"
+        ],
+        "summary": "Get a particular diary entry",
+        "description": "Returns a single diary entry by its entry_id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": null,
+            "type": "number"
+          },
+           {
+            "name": "token",
+            "in": "header",
+            "required": true,
+            "description": null,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A diary entry",
+            "schema": {
+              "type":"object",
+              "example":{
+                "status": "success",
+                "message": "successfully Got one entry",
+                "data": {
+                    "id": 322,
+                    "title": "one description",
+                    "description": "two test 2",
+                    "userid": 752,
+                    "created_at": "2018-08-09T16:13:28.337Z",
+                    "updated_at": "2018-08-09T16:13:28.337Z"
+                }
+            }
+            }
+          },
+          "401":{
+            "description":"Invalid token",
+            "type":"object",
+            "example":{"message":"Invalid token"}
+          },
+          "400":{
+            "description":"Invalid url",
+            "type":"object",
+            "example":{
+              "status": "fail",
+              "message": "Invalid Url"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entry"
+        ],
+        "summary": "Update a particular diary entry",
+        "description": "Updates a diary entry",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "Authentication token",
+            "required": true,
+            "type": "string"
+            
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Entry id",
+            "required": true,
+            "type": "number"
+            
+          },
+          {
+            "name": "title",
+            "in": "body",
+            "description": "Entry title",
+            "required": true,
+            "type": "string"
+            
+          },
+          {
+            "name": "description",
+            "in": "body",
+            "description": "Entry description",
+            "required": true,
+            "type": "string"
+            
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated a diary entry",
+            "schema": {
+              "type": "object",
+              "example":{
+                "status": "success",
+                "message": "Entry Updated succesfully",
+                "data": {
+                    "id": 323,
+                    "title": "one description",
+                    "description": "two test 2",
+                    "userid": 752,
+                    "created_at": "2018-08-10T04:32:45.291Z",
+                    "updated_at": "2018-08-10T04:32:45.291Z"
+                }
+            }
+            }
+          },
+          "401":{
+            "description":"Invalid token",
+            "example":{"message":"Invalid token"}
+          },
+          "500":{
+            "description":"Internal server error",
+            "example":{
+              "status": "fail",
+              "message": "Internal server error"
+            }
+          },
+          "400":{
+            "description":"Undefined field",
+            "example":{
+              "status": "fail",
+              "message": "All fields are required"
+            }
+          },
+          "400":{
+            "description":"Missing required fields",
+            "example":{
+              "status": "fail",
+              "message": "All fields are required"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entry"
+        ],
+        "summary": "Delete a diary entry",
+        "description": "Deletes a diary entry",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "Authentication token",
+            "required": true,
+            "type": "string"
+            
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Entry id",
+            "required": true,
+            "type": "number"
+            
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " Delete a diary entries",
+            "schema": {
+              "type": "object",
+              "example":{
+                "status": "success",
+                "message": "Entry Deleted succesfully",
+                "data": {
+                    "id": 323,
+                    "title": "one description",
+                    "description": "two test 2",
+                    "userid": 752,
+                    "created_at": "2018-08-10T04:32:45.291Z",
+                    "updated_at": "2018-08-10T04:32:45.291Z"
+                }
+            }
+            }
+          },
+          "401":{
+            "description":"Invalid token",
+            "example":{"message":"Invalid token"}
+          },
+          "500":{
+            "description":"Internal server error",
+            "example":{
+              "status": "fail",
+              "message": "Internal server error"
+            }
+          }
+        }
+      }
+    },
+    "/auth/signup": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Create user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "body",
+            "description": "Username for the user",
+            "required": true,
+            "type": "string"
+            
+          },
+          {
+            "name": "email",
+            "in": "body",
+            "description": "User's email",
+            "required": true,
+            "type": "email",
+            "example":"test@gmail.com"
+            
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "User's password",
+            "required": true,
+            "type": "password"
+            
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": " Signup user",
+            "schema": {
+              "type": "object",
+              "example":{
+                "status": "success",
+                "message": "Signup successful",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbXN1bmdwQGdtYWlsLmNvbSIsInVzZXJJZCI6NzUzLCJ1c2VybmFtZSI6InNhbXN1bmdwIiwiaWF0IjoxNTMzODg0ODkzLCJleHAiOjE1MzM5NzEyOTN9.ew0xQSt1ttMGmDmaJhru8bUOdWJ4nge3GEowuahUgxg"
+            }
+            }
+          },
+          "400":{
+            "description":"",
+            "example":{
+              "status": "fail",
+              "message": "Signup unsuccesful"
+            }
+          },
+          "400":{
+            "description":"Required fields",
+            "example":{
+              "status": "fail",
+              "message": "All fields are required"
+            }
+          },
+          "400":{
+            "description":"Invalid field input",
+            "example":{
+              "status": "fail",
+              "message": "Invalid field input"
+            }
+          },
+          "400":{
+            "description":"Invalid Email",
+            "example":{
+              "status": "fail",
+              "message": "Invalid Email Address"
+            }
+          },
+          "400":{
+            "description":"Wrong password",
+            "example":{
+              "status": "fail",
+              "message": "Paswords do not match"
+            }
+          },
+          "400":{
+            "description":"Existing user",
+            "example":{
+              "status": "fail",
+              "message": "User already exists"
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Login user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "User's email",
+            "required": true,
+            "type": "email",
+            "example":"test@gmail.com"
+            
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "User's password",
+            "required": true,
+            "type": "password"
+            
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": " ALl diary entries",
+            "schema": {
+              "type": "object",
+              "example":{
+                "status": "success",
+                "message": "Login successful",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbXN1bmdwQGdtYWlsLmNvbSIsInVzZXJJZCI6NzUzLCJ1c2VybmFtZSI6InNhbXN1bmdwIiwiaWF0IjoxNTMzODg0ODkzLCJleHAiOjE1MzM5NzEyOTN9.ew0xQSt1ttMGmDmaJhru8bUOdWJ4nge3GEowuahUgxg"
+            }
+            }
+          },
+          "400":{
+            "description":"Required fields",
+            "example":{
+              "status": "fail",
+              "message": "All fields are required"
+            }
+          },
+          "400":{
+            "description":"Invalid email",
+            "example":{
+              "status": "fail",
+              "message": "Invalid Email Address"
+            }
+          },
+          "400":{
+            "description":"Wrong email or password",
+            "example":{
+              "status": "fail",
+              "message": "Wrong email or password"
+            }
+          }
+        }
+      }
+    }
+    
+  },
+  "definitions": {
+    "Entry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "description": "Unique identifier representing a specific Diary entry."
+        },
+        "user_id": {
+          "type": "number",
+          "description": "Unique identifier representing a specific User."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the entry."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the entry."
+        },
+        "created_at": {
+          "type": "date",
+          "description": "Entry creation date."
+        },
+        "updated_at": {
+          "type": "date",
+          "description": "Date entry was updated."
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "description": "Unique identifier representing a user."
+        },
+        
+        "username": {
+          "type": "string",
+          "description": "the username of the user."
+        },
+        "email": {
+          "type": "email",
+          "description": "User email."
+        },
+        "created_at": {
+          "type": "date",
+          "description": "Entry creation date."
+        },
+        "updated_at": {
+          "type": "date",
+          "description": "Date entry was updated."
+        },
+        "password": {
+          "type": "password",
+          "description": "User password."
+        }
+      }
+    }
+    
+  }
+}
