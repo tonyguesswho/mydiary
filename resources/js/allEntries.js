@@ -1,5 +1,5 @@
 import logout from './helpers/logout';
-import {displayDate} from './helpers/display';
+import displayDate from './helpers/display';
 import checkToken from './helpers/checkToken';
 
 const token=localStorage.getItem('token')
@@ -33,9 +33,8 @@ function display(){
     let output='' 
  
          result.forEach(val=>{
-            let rawDate=val.created_at.split('-');
-            let finaldate=displayDate(rawDate);
-            
+             let rawDate=val.created_at;
+             let finaldate=displayDate(rawDate);
              output+=
              `
              <div class="box card span41" id="anEntry">
