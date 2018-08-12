@@ -25,20 +25,13 @@ const formatDate=(day,month,year)=>{
       return `${dayWithSuffix}  ${monthNames[parseInt(month)-1]} ${year}`;
 }
 const displayDate=(rawDate)=>{
-    let extractDay=rawDate[2].split('')
-    let first=extractDay[0];
-    let second=extractDay[1];
-    let fs=first+second;
-    let day=parseInt(fs)
-    let month=rawDate[1];
-    let year=rawDate[0]
-    
-    let finaldate=formatDate(day,month,year);
+    const date =new Date (rawDate)
+    const day=date.getDate();
+    const month=date.getMonth();
+    const year=date.getFullYear();
+    const finaldate=formatDate(day,month,year);
     return finaldate;
 }
 
 
-module.exports = {
-formatDate,
-displayDate
-}
+export default displayDate;

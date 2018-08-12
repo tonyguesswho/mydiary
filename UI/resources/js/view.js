@@ -1,5 +1,5 @@
 import logout from './helpers/logout';
-import {displayDate} from './helpers/display';
+import displayDate from './helpers/display';
 import checkToken from './helpers/checkToken';
 
 const token=localStorage.getItem('token')
@@ -23,7 +23,7 @@ function singleView(e){
             alert(data.message)
         }else{
            displayResult=data.data;  
-        let rawDate=displayResult.created_at.split('-');
+        let rawDate=displayResult.created_at;
         let date=displayDate(rawDate)
            displayEntry(date);  
         }

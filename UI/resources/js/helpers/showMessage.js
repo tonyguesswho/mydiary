@@ -1,5 +1,5 @@
 const showMessage=(data,status)=>{
-    const position=document.getElementById('signUpBox');
+    const position=document.getElementById('messageBox');
     position.insertAdjacentHTML('afterbegin',`<p class="span31 span3-center" id='msg'>${data.message}</p>`)
    const  msgPosition=document.getElementById('msg');
     msgPosition.className=`msg_output_${status} span31 span3-center`
