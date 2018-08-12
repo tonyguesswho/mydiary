@@ -1,9 +1,9 @@
 import logout from './helpers/logout';
 import showMessage from './helpers/showMessage';
+import checkToken from './helpers/checkToken';
+
 const token=localStorage.getItem('token')
-if(!token){
-    redirect: window.location.replace("signin.html")  
-}
+checkToken(token);
 document.getElementById('addEntry').addEventListener('submit',add)
 
 function add(e){
