@@ -1,10 +1,11 @@
 import logout from './helpers/logout';
 import showMessage from './helpers/showMessage';
-const token=localStorage.getItem('token')
+import checkToken from './helpers/checkToken';
 
-if(!token){
-    redirect: window.location.replace("signin.html")  
-}
+const token=localStorage.getItem('token')
+checkToken(token);
+
+
 let qs=decodeURIComponent(window.location.search)
 qs=qs.substring(1).split('=')[1]
 let  entryId=parseInt(qs)

@@ -1,10 +1,9 @@
 import logout from './helpers/logout';
 import {displayDate} from './helpers/display';
+import checkToken from './helpers/checkToken';
 
 const token=localStorage.getItem('token')
-if(!token){
-    redirect: window.location.replace("signin.html")  
-}
+checkToken(token)
 let querySearch=decodeURIComponent(window.location.search)
 let qs=querySearch.substring(1).split('=')[1]
 let  entryId=parseInt(qs)

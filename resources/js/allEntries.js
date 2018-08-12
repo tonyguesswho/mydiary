@@ -1,10 +1,9 @@
 import logout from './helpers/logout';
 import {displayDate} from './helpers/display';
+import checkToken from './helpers/checkToken';
 
 const token=localStorage.getItem('token')
-if(!token){
-    redirect: window.location.replace("signin.html")  
-}
+checkToken(token)
 const request = new Request('https://mydiary-api.herokuapp.com/api/v1/entries', {
     headers: new Headers({
       'Content-Type': 'application/json',
