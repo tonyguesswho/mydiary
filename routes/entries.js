@@ -6,6 +6,7 @@ import checkAuth from "../middleware/auth";
 import entryField from "../middleware/entryField";
 import fieldUndefined from "../middleware/fieldUndefined";
 import checkUrl from "../middleware/url";
+import canUpdate from "../middleware/canUpdate";
 
 const router = Router();
 
@@ -27,6 +28,7 @@ router.put(
   fieldUndefined,
   entryField,
   checkAuth,
+  canUpdate,
   entriesController.updateEntry
 );
 
