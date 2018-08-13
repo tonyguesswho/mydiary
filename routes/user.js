@@ -8,6 +8,7 @@ import checkPassword from "../middleware/checkPassword";
 import loginEmpty from "../middleware/isFieldEmptyLogin";
 import unedfinedSignup from "../middleware/undefinedSignup";
 import undefinedLogin from "../middleware/undefinedLogin";
+import { loginFields, signupFields } from "../middleware/extraField";
 
 require("dotenv").config();
 
@@ -16,6 +17,7 @@ const router = Router();
 router.post(
   "/signup",
   unedfinedSignup,
+  signupFields,
   isFieldEmpty,
   checkEmail,
   checkPassword,
@@ -26,6 +28,7 @@ router.post(
 router.post(
   "/login",
   undefinedLogin,
+  loginFields,
   loginEmpty,
   checkEmail,
   authController.signin
