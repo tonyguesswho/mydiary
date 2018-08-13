@@ -31,30 +31,37 @@ function getEntries(){
 
 function display(){
     let output='' 
- 
-         result.forEach(val=>{
-             let rawDate=val.created_at;
-             let finaldate=displayDate(rawDate);
-             output+=
-             `
-             <div class="box card span41" id="anEntry">
-                <h4>${val.title}</h4>
-                <a href="entry.html?entryid=${val.id}" class="ebtn ebtn-filled">View</a>
-                <a href="edit_entry.html?entryid=${val.id}" class="ebtn ebtn-transparent">Edit</a>
-                <div class="entry-date">
-                    <p>${finaldate}</p>
-                </div>
-                
-                
+    if(result.length>0){
+        document.getElementById('ent').innerHTML=`<p>All Diary Entries</p>`
+       result.forEach(val=>{
+            let rawDate=val.created_at;
+            let finaldate=displayDate(rawDate);
+            output+=
+            `
+            <div class="box card span41" id="anEntry">
+               <h4>${val.title}</h4>
+               <a href="entry.html?entryid=${val.id}" class="ebtn ebtn-filled">View</a>
+               <a href="edit_entry.html?entryid=${val.id}" class="ebtn ebtn-transparent">Edit</a>
+               <div class="entry-date">
+                   <p>${finaldate}</p>
+               </div>
+               
+               
 
-            </div>
-             
-             `
-         })
-     
-         document.getElementById('allEntries').innerHTML=output
+           </div>
+            
+            `
+        })
+    
+        document.getElementById('allEntries').innerHTML=output
+
+    }else{
+        document.getElementById('ent').innerHTML=`<p>No diary entry : <a href="add_entry.html">Write</a></p>`
+    }
+    
+         
  
-     }
+}
 
 getEntries()
 

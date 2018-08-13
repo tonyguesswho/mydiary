@@ -38,6 +38,10 @@ h2 {
   letter-spacing: 1px;
   color: #2c3e50;
 }
+#ent a{
+  text-decoration: none;
+  color: #169e83;
+}
 h2::after {
   display: block;
   height: 2px;
