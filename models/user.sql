@@ -2,7 +2,7 @@
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  username VARCHAR NOT NULL UNIQUE,
+  username VARCHAR NOT NULL,
   email VARCHAR NOT NULL UNIQUE,
   password  VARCHAR NOT NULL,
   created_at timestamp with time zone NOT NULL DEFAULT now(),
