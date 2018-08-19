@@ -18,7 +18,8 @@ app.use("/api/v1/entries", entries);
 
 app.use("/auth", user);
 const options = {
-  customCss: ".swagger-ui .topbar { display: none }"
+  // customCss: ".swagger-ui .topbar, .swagger-ui .title { display: none }"
+  // customCss: ".swagger-ui .title { display: none }"
 };
 app.use("/", serve, setup(swaggerDocument, options));
 
